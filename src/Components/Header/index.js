@@ -1,26 +1,21 @@
-import React from "react";
-import "./styles.css";
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles';
+import NavBar from "../Navbar"
+import headerBG from "../../assets/headerBG.jpg"
 
-export default class Header extends React.Component {
+const useStyles = makeStyles((theme) => ({
+    root: {
+        height: "100vh",
+      backgroundImage: `url(${headerBG})` ,
+      backgroundSize: "cover"
+    },
+  }));
 
-  render() {
+export default function Header() {
+  const classes = useStyles();
     return (
-      <div >
-        <div className="header">
-            <h3>Movie Explorer</h3>
-            <div className="search">
-              <i className="fas fa-search"></i>
-              <input 
-                placeholder="Search movies…"
-                className="inputRoot"
-                value={this.props.query}
-                onChange={this.props.handleChange}
-                onKeyPress={this.props.handlesubmit}
-              />
-            </div>
+        <div className={classes.root}>
+            <NavBar></NavBar>
         </div>
-      </div>
-    );
-  }
-  
-  }
+    )
+}
