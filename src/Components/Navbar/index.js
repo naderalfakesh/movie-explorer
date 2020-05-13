@@ -1,63 +1,60 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import IconButton from '@material-ui/core/IconButton';
-import { makeStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
-import Navlinks from "./Navlinks"
+import React from "react";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Container from "@material-ui/core/Container";
+import IconButton from "@material-ui/core/IconButton";
+import { makeStyles } from "@material-ui/core/styles";
+import MenuIcon from "@material-ui/icons/Menu";
+import Navlinks from "./Navlinks";
+import Login from "./Login";
+import ElevationScroll from "./ElevationScroll";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
+    navigation: {
+        flexGrow: 1,
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+        color: theme.palette.text.primary,
+    },
+    AppBar: {
+        paddingTop: theme.spacing(5),
+    },
 }));
 
-function ElevationScroll(props) {
-  const { children, window } = props;
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-    target: window ? window() : undefined,
-  });
-
-  return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
-  });
-}
-
-ElevationScroll.propTypes = {
-  children: PropTypes.element.isRequired,
-  window: PropTypes.func,
-};
-
 export default function ElevateAppBar(props) {
-  const classes = useStyles();
+    const classes = useStyles();
 
-  return (
-    <React.Fragment>
-      <ElevationScroll {...props}>
-        <AppBar color="transparent" >
-          <Toolbar>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="open drawer"
-            >
-              <MenuIcon />
-            </IconButton>
-            <div>
-              <Navlinks />
-            </div>
-          </Toolbar>
-        </AppBar>
-      </ElevationScroll>
-      <Toolbar />
-    </React.Fragment>
-  );
+    return (
+        <React.Fragment>
+            <ElevationScroll {...props}>
+                <AppBar
+                    color="transparent"
+                    elevation={0}
+                    className={classes.AppBar}
+                    position="static"
+                >
+                    <Container maxWidth="lg">
+                        <Toolbar>
+                            <IconButton
+                                edge="start"
+                                className={classes.menuButton}
+                                aria-label="menu"
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <div className={classes.navigation}>
+                                <Navlinks />
+                                <Login />
+                            </div>
+                        </Toolbar>
+                    </Container>
+                </AppBar>
+            </ElevationScroll>
+            <Toolbar />
+        </React.Fragment>
+    );
 }
