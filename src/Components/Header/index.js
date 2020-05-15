@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import NavBar from "../Navbar";
 import SearchBar from "../SearchBar";
 import headerBG from "../../assets/headerBG.jpg";
+import HeaderSlider from "../../views/HeaderSlider";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,6 +31,7 @@ export default function Header() {
         <div className={classes.root}>
             <NavBar />
             <SearchBar />
+            <HeaderSlider />
         </div>
     );
 }

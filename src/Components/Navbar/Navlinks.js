@@ -5,8 +5,11 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import NavSubMenu from "./NavSubMenu";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
+    link: {
         padding: theme.spacing(2),
+        // "&:hover": {
+        //     color: theme.palette.secondary.main,
+        // },
     },
 }));
 
@@ -17,28 +20,32 @@ export default function Navlinks() {
     return (
         <div>
             {list.map((link) => (
-                <Link
-                    href={link.url}
-                    id={link.url}
-                    color={"textPrimary"}
-                    variant="body2"
-                    className={classes.root}
-                    key={link.url}
-                    ref={linkRef}
-                    onMouseEnter={(event) => setToggleMenu(event.currentTarget)}
-                    onMouseLeave={(event) => setToggleMenu(null)}
-                >
-                    {link.name}
+                <>
+                    <Link
+                        href={link.url}
+                        id={link.url}
+                        color={"textPrimary"}
+                        variant="body2"
+                        className={classes.link}
+                        key={link.url}
+                        ref={linkRef}
+                        onMouseEnter={(event) =>
+                            setToggleMenu(event.currentTarget)
+                        }
+                        onMouseLeave={(event) => setToggleMenu(null)}
+                    >
+                        {link.name}
+                    </Link>
                     {link.subList.length > 0 && (
                         <>
-                            <ExpandMoreIcon />{" "}
+                            <ExpandMoreIcon color={"textPrimary"} />{" "}
                             <NavSubMenu
                                 subList={link.subList}
                                 toggleMenu={null}
                             />
                         </>
                     )}
-                </Link>
+                </>
             ))}
         </div>
     );

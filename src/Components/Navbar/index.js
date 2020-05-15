@@ -54,7 +54,7 @@ export default function ElevateAppBar(props) {
                     </Container>
                 </AppBar>
             </ElevationScroll>
-            <Toolbar />
+            {/* <Toolbar /> */}
         </React.Fragment>
     );
 }
