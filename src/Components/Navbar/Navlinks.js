@@ -20,7 +20,7 @@ export default function Navlinks() {
     return (
         <div>
             {list.map((link) => (
-                <>
+                <React.Fragment key={link.url}>
                     <Link
                         href={link.url}
                         id={link.url}
@@ -38,14 +38,14 @@ export default function Navlinks() {
                     </Link>
                     {link.subList.length > 0 && (
                         <>
-                            <ExpandMoreIcon color={"textPrimary"} />{" "}
+                            <ExpandMoreIcon color={"primary"} />{" "}
                             <NavSubMenu
                                 subList={link.subList}
                                 toggleMenu={null}
                             />
                         </>
                     )}
-                </>
+                </React.Fragment>
             ))}
         </div>
     );
