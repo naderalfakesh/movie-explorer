@@ -1,22 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, Link, Box, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "../../Components/Slider";
-import { imageBaseURL } from "../../Components/API/constants";
+import MovieCard from "../../views/MediaCard";
 
 const settings = {
     slidesToShow: 4,
     slidesToScroll: 4,
 };
-const imgWidth = 150;
-const imgHeight = 250;
 
 const useStyles = makeStyles((theme) => ({
-    img: {
-        height: imgHeight,
-        width: imgWidth,
-        objectFit: "cover",
-    },
     hover: {
         "&:hover": {
             color: "#dd003f",
@@ -27,10 +20,13 @@ const useStyles = makeStyles((theme) => ({
 export default function HomeSection({
     title = "Title",
     link = "3",
+    type = "movie",
     list = [],
+    variantList = [],
+    handleChange,
 }) {
     const classes = useStyles();
-    console.log(list);
+    const [activeVariant, setActiveVariant] = useState(variantList[0]);
     return (
         <Box mb={5}>
             <Grid container justify="space-between" alignItems="baseline">
@@ -52,56 +48,36 @@ export default function HomeSection({
             </Grid>
             <Box my={3}>
                 <Grid container spacing={2}>
-                    <Grid item>
-                        <Link
-                            className={classes.hover}
-                            color="textSecondary"
-                            href={link}
-                            variant="subtitle1"
-                        >
-                            #POPULAR
-                        </Link>
-                    </Grid>
-                    <Grid item>
-                        <Link
-                            className={classes.hover}
-                            color="textPrimary"
-                            href={link}
-                            variant="subtitle1"
-                        >
-                            #COMING SOON
-                        </Link>
-                    </Grid>
-                    <Grid item>
-                        <Link
-                            className={classes.hover}
-                            color="textPrimary"
-                            href={link}
-                            variant="subtitle1"
-                        >
-                            #TOP RATED
-                        </Link>
-                    </Grid>
-                    <Grid item>
-                        <Link
-                            className={classes.hover}
-                            color="textPrimary"
-                            href={link}
-                            variant="subtitle1"
-                        >
-                            #MOST REVIEWED
-                        </Link>
-                    </Grid>
+                    {variantList.map((variant) => (
+                        <Grid item key={variant}>
+                            <Link
+                                className={classes.hover}
+                                color={
+                                    activeVariant == variant
+                                        ? "textSecondary"
+                                        : "textPrimary"
+                                }
+                                href={link}
+                                variant="subtitle1"
+                                onClick={(event) => {
+                                    event.preventDefault();
+                                    setActiveVariant(variant);
+                                    handleChange(variant);
+                                }}
+                            >
+                                #{variant.toUpperCase()}
+                            </Link>
+                        </Grid>
+                    ))}
                 </Grid>
             </Box>
             <Box>
                 <Slider {...settings}>
                     {list.map((movie) => (
-                        <img
-                            className={classes.img}
-                            src={`${imageBaseURL(300)}${movie.poster_path}`}
-                            alt={movie.original_title}
+                        <MovieCard
+                            {...movie}
                             key={movie.original_title}
+                            type={type}
                         />
                     ))}
                 </Slider>

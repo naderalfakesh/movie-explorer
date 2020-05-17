@@ -1,69 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "../../Components/Slider";
-import { makeStyles } from "@material-ui/core/styles";
 import { Container } from "@material-ui/core";
 import { Box } from "@material-ui/core";
+import { getMovies } from "../../Components/API";
+import MovieCard from "../../views/MediaCard";
 
 const settings = {
     slidesToShow: 4,
     slidesToScroll: 4,
 };
-const imgWidth = 200;
-const imgHeight = 300;
-
-const useStyles = makeStyles((theme) => ({
-    img: {
-        height: imgHeight,
-        width: imgWidth,
-    },
-}));
 
 export default function HeaderSlider() {
-    const classes = useStyles();
+    const [movieList, setMovieList] = useState([]);
+    useEffect(() => {
+        getMovies("now_playing").then((json) => setMovieList(json.results));
+    }, []);
     return (
         <Container maxWidth="lg">
             <Box mt={3}>
                 <Slider {...settings}>
-                    <img
-                        className={classes.img}
-                        src={`https://via.placeholder.com/${imgWidth}x${imgHeight}`}
-                        alt="movie poster"
-                    />
-                    <img
-                        className={classes.img}
-                        src={`https://via.placeholder.com/${imgWidth}x${imgHeight}`}
-                        alt="movie poster"
-                    />
-                    <img
-                        className={classes.img}
-                        src={`https://via.placeholder.com/${imgWidth}x${imgHeight}`}
-                        alt="movie poster"
-                    />
-                    <img
-                        className={classes.img}
-                        src={`https://via.placeholder.com/${imgWidth}x${imgHeight}`}
-                        alt="movie poster"
-                    />
-                    <img
-                        className={classes.img}
-                        src={`https://via.placeholder.com/${imgWidth}x${imgHeight}`}
-                        alt="movie poster"
-                    />
-                    <img
-                        className={classes.img}
-                        src={`https://via.placeholder.com/${imgWidth}x${imgHeight}`}
-                        alt="movie poster"
-                    />
-                    <img
-                        className={classes.img}
-                        src={`https://via.placeholder.com/${imgWidth}x${imgHeight}`}
-                        alt="movie poster"
-                    />
-                    <img
-                        className={classes.img}
-                        src={`https://via.placeholder.com/${imgWidth}x${imgHeight}`}
-                        alt="movie poster"
-                    />
+                    {movieList.map((movie) => (
+                        <MovieCard {...movie} key={movie.original_title} />
+                    ))}
                 </Slider>
             </Box>
         </Container>

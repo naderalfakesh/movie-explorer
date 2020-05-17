@@ -50,9 +50,9 @@ export default function SearchBar() {
         <Container maxWidth="lg">
             <Paper component="form" className={classes.root}>
                 <FormControl variant="filled" className={classes.formControl}>
-                    <InputLabel htmlFor="filled-age-native-simple">
+                    {/* <InputLabel htmlFor="filled-age-native-simple">
                         Age
-                    </InputLabel>
+                    </InputLabel> */}
                     <Select
                         native
                         displayEmpty
@@ -63,10 +63,12 @@ export default function SearchBar() {
                             id: "filled-age-native-simple",
                         }}
                     >
-                        <option aria-label="None" value="" />
-                        <option value={10}>Ten</option>
-                        <option value={20}>Twenty</option>
-                        <option value={30}>Thirty</option>
+                        <option aria-label="None" value="">
+                            All
+                        </option>
+                        <option value={10}>Movie</option>
+                        <option value={20}>TV show</option>
+                        <option value={30}>Cast member</option>
                     </Select>
                 </FormControl>
                 <InputBase

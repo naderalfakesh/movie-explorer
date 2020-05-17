@@ -1,79 +1,35 @@
 import React from "react";
-// import movies from './data';
-import MoviesList from "./Components/MovieList/index.js";
+import { Route, Switch } from "react-router-dom";
 import Header from "./Components/Header/index.js";
-import Movie from "./Components/Movie/index.js";
-import { Route } from "react-router-dom";
 import Home from "./views/Home";
+import Movies from "./views/Movies";
+import Series from "./views/Series";
+import MovieDetails from "./views/MovieDetails";
+import SerieDetails from "./views/SerieDetails";
 
 class App extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            movies: [],
-            query: "",
-        };
-    }
-    constructURL = () => {
-        let URL = "";
-        const BASE_URL = "https://api.themoviedb.org/3";
-        const API_KEY = "542003918769df50083a13c415bbc602";
-        URL = BASE_URL;
-        if (this.state.query === "") {
-            URL += `/movie/popular?api_key=${API_KEY}`;
-        } else {
-            URL += `/search/movie?api_key=${API_KEY}&query=${this.state.query}&include_adult=false`;
-        }
-        return URL;
-    };
-
-    componentDidMount = () => {
-        fetch(this.constructURL())
-            .then((resp) => resp.json())
-            .then((json) => {
-                this.setState({
-                    movies: json.results,
-                });
-            });
-    };
-
-    handleChange = (e) => {
-        this.setState({
-            query: e.target.value,
-        });
-    };
-    handlesubmit = (e) => {
-        if (e.key === "Enter") {
-            fetch(this.constructURL())
-                .then((resp) => resp.json())
-                .then((json) => {
-                    this.setState(
-                        {
-                            movies: json.results,
-                        },
-                        () => console.log(this.state)
-                    );
-                });
-        }
-    };
-
     render() {
         return (
-            <div>
+            <>
                 <Header />
-                <Home />
-                {/* <Route
-                    exact
-                    path="/"
-                    render={() => <MoviesList movies={this.state.movies} />}
-                />
-                <Route
-                    path="/movies/:id"
-                    render={(routerProps) => (
-                        <Movie {...routerProps} movies={this.state.movies} />
-                    )}
-                /> */}
-            </div>
+                <Switch>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    <Route exact path="/movies">
+                        <Movies />
+                    </Route>
+                    <Route exact path="/movie/:id">
+                        <MovieDetails />
+                    </Route>
+                    <Route exact path="/series">
+                        <Series />
+                    </Route>
+                    <Route exact path="/serie/:id">
+                        <SerieDetails />
+                    </Route>
+                </Switch>
+            </>
         );
     }
 }

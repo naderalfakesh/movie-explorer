@@ -64,11 +64,11 @@ const list = [
     },
     {
         name: "Tv shows",
-        url: "/tvshows",
+        url: "/series",
         subList: [
-            { name: "Most recent t", url: "/tvshows/recent" },
-            { name: "Most popular", url: "/tvshows/popular" },
-            { name: "Best rated", url: "/tvshows/rated" },
+            { name: "Most recent t", url: "/series/recent" },
+            { name: "Most popular", url: "/series/popular" },
+            { name: "Best rated", url: "/series/rated" },
         ],
     },
     {
