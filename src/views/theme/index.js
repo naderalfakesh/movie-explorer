@@ -9,6 +9,8 @@ let theme = createMuiTheme({
     palette: {
         // type: "light",
         primary: { main: "#0f2133" },
+        // secondary: default is ok
+        success: { main: "#dcf836" },
         text: {
             primary: "#abb7c4",
             secondary: "#dd003f",

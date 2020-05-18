@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     img: {
         height: imgHeight,
         width: imgWidth,
+        // filter: "hue-rotate(90deg)",
     },
     wrapper: {
         height: imgHeight,

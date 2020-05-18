@@ -53,7 +53,7 @@ export default function HomeSection({
                             <Link
                                 className={classes.hover}
                                 color={
-                                    activeVariant == variant
+                                    activeVariant === variant
                                         ? "textSecondary"
                                         : "textPrimary"
                                 }

@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import NavBar from "../Navbar";
 import SearchBar from "../SearchBar";
+import Social from "../Header/Social";
 import headerBG from "../../assets/headerBG.jpg";
 import HeaderSlider from "../../views/HeaderSlider";
 
@@ -31,6 +32,7 @@ export default function Header() {
         <div className={classes.root}>
             <NavBar />
             <SearchBar />
+            <Social />
             <HeaderSlider />
         </div>
     );

@@ -4,8 +4,18 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        padding: theme.spacing(2),
+    hover: {
+        transition: "all 0.3s ease-out",
+        fontWeight: 900,
+        marginRight: theme.spacing(2),
+        "&:hover": {
+            textDecoration: "none",
+            color: theme.palette.success.main,
+        },
+    },
+    btn: {
+        fontWeight: 900,
+        fontSize: "1rem",
     },
 }));
 
@@ -13,10 +23,19 @@ export default function Login() {
     const classes = useStyles();
     return (
         <div>
-            <Link href="/" color={"textPrimary"} variant="body2">
+            <Link
+                className={classes.hover}
+                href="/"
+                color={"textPrimary"}
+                variant="h6"
+            >
                 LOG IN
             </Link>
-            <Button variant="contained" color="secondary">
+            <Button
+                className={classes.btn}
+                variant="contained"
+                color="secondary"
+            >
                 SIGN UP
             </Button>
         </div>
