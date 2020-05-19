@@ -9,6 +9,10 @@ import YouTubeIcon from "@material-ui/icons/YouTube";
 const useStyles = makeStyles((theme) => ({
     color: {
         color: "white",
+        "&:hover span": {
+            transition: "all 0.5s ease-in ",
+            color: theme.palette.success.main,
+        },
     },
     right: {
         textAlign: "right",

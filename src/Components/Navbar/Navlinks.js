@@ -1,27 +1,7 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import NavLink from "./NavLink";
 
-const useStyles = makeStyles((theme) => ({
-    link: {
-        padding: theme.spacing(2),
-        fontWeight: 900,
-        "&:hover": {
-            textDecoration: "none",
-            color: theme.palette.success.main,
-        },
-    },
-    arrow: {
-        color: theme.palette.text.primary,
-        "&:hover": {
-            textDecoration: "none",
-            color: theme.palette.success.main,
-        },
-    },
-}));
-
 export default function Navlinks() {
-    const classes = useStyles();
     return (
         <div>
             {list.map((link, i) => (

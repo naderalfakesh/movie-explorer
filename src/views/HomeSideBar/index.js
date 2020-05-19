@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Link, Box, Divider } from "@material-ui/core";
+import { Typography, Link, Divider } from "@material-ui/core";
 import ActorAvatar from "../../Components/ActorAvatar";
 
 export default function HomeSideBar() {
