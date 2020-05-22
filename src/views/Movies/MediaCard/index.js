@@ -2,10 +2,10 @@ import React from "react";
 import { Typography, Box, Chip } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { imageBaseURL } from "../../Components/API/constants";
+import { imageBaseURL } from "../../../Components/API/constants";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
-import genres from "../../Components/API/genres";
+import genres from "../../../Components/API/genres";
 
 const useStyles = makeStyles((theme) => ({
     card: {

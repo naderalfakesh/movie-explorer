@@ -18,4 +18,15 @@ const getSerie = (serie_id) => {
     let URL = `${BASE_URL}/tv/${serie_id}?api_key=${API_KEY}`;
     return fetchAPI(URL);
 };
-export { fetchAPI, getMovies, getMovie, getSeries, getSerie };
+const getTrendingPersons = () => {
+    let URL = `${BASE_URL}/trending/person/week?api_key=${API_KEY}`;
+    return fetchAPI(URL);
+};
+export {
+    fetchAPI,
+    getMovies,
+    getMovie,
+    getSeries,
+    getSerie,
+    getTrendingPersons,
+};

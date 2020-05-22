@@ -1,12 +1,24 @@
 import React from "react";
 import { Typography, Link, Box, Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+    hover: {
+        "&:hover": {
+            color: "#dd003f",
+            transition: "0.5s",
+        },
+    },
+}));
 
 export default function ActorAvatar({
     name = "Nader Alfakesh",
     profession = "Actor",
     img = "https://via.placeholder.com/75",
     link = "#",
+    knownFor = "Popular movie",
 }) {
+    const classes = useStyles();
     return (
         <Box my={3}>
             <Link href={link}>
@@ -20,6 +32,9 @@ export default function ActorAvatar({
                         </Typography>
                         <Typography variant="caption" component="h4">
                             {profession}
+                        </Typography>
+                        <Typography variant="caption" component="h4">
+                            {knownFor}
                         </Typography>
                     </Grid>
                 </Grid>

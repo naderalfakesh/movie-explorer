@@ -1,11 +1,12 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Header from "./Components/Header/index.js";
+import Header from "./views/Header";
+import Footer from "./views/Footer";
 import Home from "./views/Home";
 import Movies from "./views/Movies";
 import Series from "./views/Series";
-import MovieDetails from "./views/MovieDetails";
-import SerieDetails from "./views/SerieDetails";
+import MovieDetails from "./views/Movies/MovieDetails";
+import SerieDetails from "./views/Series/SerieDetails";
 
 class App extends React.Component {
     render() {
@@ -29,6 +30,7 @@ class App extends React.Component {
                         <SerieDetails />
                     </Route>
                 </Switch>
+                <Footer />
             </>
         );
     }

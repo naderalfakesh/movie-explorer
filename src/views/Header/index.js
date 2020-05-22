@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import NavBar from "../Navbar";
-import SearchBar from "../SearchBar";
+import NavBar from "../../Components/Navbar";
+import SearchBar from "../../Components/SearchBar";
 import Social from "../Header/Social";
 import headerBG from "../../assets/headerBG.jpg";
 import HeaderSlider from "../../views/HeaderSlider";

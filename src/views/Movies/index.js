@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getMovies } from "../../Components/API";
-import MovieCard from "../MediaCard";
+import MovieCard from "./MediaCard";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({

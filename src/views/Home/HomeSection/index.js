@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Typography, Link, Box, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Slider from "../../Components/Slider";
-import MovieCard from "../../views/MediaCard";
+import Slider from "../../../Components/Slider";
+import MovieCard from "../../Movies/MediaCard";
 
 const settings = {
     slidesToShow: 4,
@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     hover: {
         "&:hover": {
             color: "#dd003f",
+            transition: "0.5s",
         },
     },
 }));

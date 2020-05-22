@@ -3,7 +3,7 @@ import Slider from "../../Components/Slider";
 import { Container } from "@material-ui/core";
 import { Box } from "@material-ui/core";
 import { getMovies } from "../../Components/API";
-import MovieCard from "../../views/MediaCard";
+import MovieCard from "../Movies/MediaCard";
 
 const settings = {
     slidesToShow: 4,

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Grid, Box } from "@material-ui/core";
-import HomeSection from "../HomeSection";
-import HomeSideBar from "../HomeSideBar";
+import HomeSection from "./HomeSection";
+import HomeSideBar from "./HomeSideBar";
 import { getMovies, getSeries } from "../../Components/API";
 
 export default function Header() {
