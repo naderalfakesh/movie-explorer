@@ -64,6 +64,7 @@ export default function Navlink({ url, name, subList }) {
                             onClick={handleClose}
                             component={routerLink}
                             to={item.url}
+                            key={item.url}
                         >
                             {item.name}
                         </MenuItem>

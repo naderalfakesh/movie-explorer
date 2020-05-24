@@ -20,7 +20,7 @@ export default function HeaderSlider() {
             <Box mt={3}>
                 <Slider {...settings}>
                     {movieList.map((movie) => (
-                        <MovieCard {...movie} key={movie.original_title} />
+                        <MovieCard {...movie} key={movie.title} />
                     ))}
                 </Slider>
             </Box>

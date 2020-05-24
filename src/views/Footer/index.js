@@ -1,8 +1,16 @@
 import React from "react";
-import { Typography, Link, Box, Grid, Container } from "@material-ui/core";
+import {
+    Typography,
+    Link,
+    Box,
+    Grid,
+    Container,
+    TextField,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import BG from "../../assets/footerBG.jpg";
 import logo from "../../assets/logo.png";
+import FooterLink from "./FooterLink";
 
 const useStyles = makeStyles((theme) => ({
     wrapper: {
@@ -11,6 +19,18 @@ const useStyles = makeStyles((theme) => ({
         backgroundSize: "contain",
         color: "white",
     },
+    input: {
+        marginTop: theme.spacing(1.5),
+        marginBottom: theme.spacing(1.5),
+    },
+    title: {
+        marginBottom: theme.spacing(3),
+    },
+    logo: {
+        marginBottom: theme.spacing(5),
+        height: "50px",
+        objectFit: "cover",
+    },
 }));
 
 export default function Footer() {
@@ -18,82 +38,125 @@ export default function Footer() {
     return (
         <Box py={5} className={classes.wrapper}>
             <Container maxWidth="lg">
-                <Grid container justify="space-between">
+                <Grid container justify="space-between" spacing={5}>
                     <Grid item>
-                        <img src={logo} alt="logo" width="100" />
+                        <img
+                            className={classes.logo}
+                            src={logo}
+                            alt="logo"
+                            width="100"
+                        />
                         <Typography>
-                            5th Avenue st, manhattan New York, NY 10001
+                            5th Avenue st, manhattan <br /> New York, NY 10001
                         </Typography>
                         <Typography>Call us: (+01) 202 342 6789</Typography>
                     </Grid>
                     <Grid item>
-                        <Typography>Title</Typography>
-                        <Typography>
-                            <Link>Link</Link>
+                        <Typography variant="h5" className={classes.title}>
+                            Resources
                         </Typography>
-                        <Typography>
-                            <Link>Link</Link>
-                        </Typography>
-                        <Typography>
-                            <Link>Link</Link>
-                        </Typography>
-                        <Typography>
-                            <Link>Link</Link>
-                        </Typography>
-                        <Typography>
-                            <Link>Link</Link>
-                        </Typography>
-                        <Typography>
-                            <Link>Link</Link>
-                        </Typography>
+                        {links.resources.map(({ link, label }) => (
+                            <FooterLink link={link} label={label} key={label} />
+                        ))}
                     </Grid>
                     <Grid item>
-                        <Typography>Title</Typography>
-                        <Typography>
-                            <Link>Link</Link>
+                        <Typography variant="h5" className={classes.title}>
+                            Legal
                         </Typography>
-                        <Typography>
-                            <Link>Link</Link>
-                        </Typography>
-                        <Typography>
-                            <Link>Link</Link>
-                        </Typography>
-                        <Typography>
-                            <Link>Link</Link>
-                        </Typography>
-                        <Typography>
-                            <Link>Link</Link>
-                        </Typography>
-                        <Typography>
-                            <Link>Link</Link>
-                        </Typography>
+                        {links.legal.map(({ link, label }) => (
+                            <FooterLink link={link} label={label} key={label} />
+                        ))}
                     </Grid>
                     <Grid item>
-                        <Typography>Title</Typography>
-                        <Typography>
-                            <Link>Link</Link>
+                        <Typography variant="h5" className={classes.title}>
+                            Account
                         </Typography>
-                        <Typography>
-                            <Link>Link</Link>
-                        </Typography>
-                        <Typography>
-                            <Link>Link</Link>
-                        </Typography>
-                        <Typography>
-                            <Link>Link</Link>
-                        </Typography>
-                        <Typography>
-                            <Link>Link</Link>
-                        </Typography>
-                        <Typography>
-                            <Link>Link</Link>
-                        </Typography>
+                        {links.account.map(({ link, label }) => (
+                            <FooterLink link={link} label={label} key={label} />
+                        ))}
                     </Grid>
                     <Grid item>
-                        <Typography>Title</Typography>
+                        <Typography variant="h5" className={classes.title}>
+                            Newsletter
+                        </Typography>
+                        <Typography>
+                            Subscribe to our newsletter system now <br /> to get
+                            latest news from us.
+                        </Typography>
+                        <form noValidate autoComplete="off">
+                            <TextField
+                                id="outlined-basic"
+                                label="Enter your Email..."
+                                variant="outlined"
+                                color="secondary"
+                                className={classes.input}
+                            />
+                        </form>
+                        <Typography>
+                            <Link href="#" color="textPrimary">
+                                SUBSCRIBE NOW >
+                            </Link>
+                        </Typography>
                     </Grid>
                 </Grid>
             </Container>
         </Box>
     );
 }
+
+const links = {
+    resources: [
+        {
+            label: "About",
+            link: "#",
+        },
+        {
+            label: "Contact Us",
+            link: "#",
+        },
+        {
+            label: "Forums",
+            link: "#",
+        },
+        {
+            label: "Blog",
+            link: "#",
+        },
+        {
+            label: "Help Center",
+            link: "#",
+        },
+    ],
+    legal: [
+        {
+            label: "Terms of Use",
+            link: "#",
+        },
+        {
+            label: "Privacy Policy",
+            link: "#",
+        },
+        {
+            label: "Security",
+            link: "#",
+        },
+    ],
+    account: [
+        {
+            label: "My Account",
+            link: "#",
+        },
+        {
+            label: "Watchlist",
+            link: "#",
+        },
+        {
+            label: "Collections",
+            link: "#",
+        },
+        {
+            label: "User Guide",
+            link: "#",
+        },
+    ],
+};

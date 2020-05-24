@@ -7,6 +7,7 @@ import Movies from "./views/Movies";
 import Series from "./views/Series";
 import MovieDetails from "./views/Movies/MovieDetails";
 import SerieDetails from "./views/Series/SerieDetails";
+import Colors from "./views/theme/Colors";
 
 class App extends React.Component {
     render() {
@@ -28,6 +29,9 @@ class App extends React.Component {
                     </Route>
                     <Route exact path="/serie/:id">
                         <SerieDetails />
+                    </Route>
+                    <Route exact path="/colors">
+                        <Colors />
                     </Route>
                 </Switch>
                 <Footer />

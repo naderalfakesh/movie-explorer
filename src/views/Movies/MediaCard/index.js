@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
         position: "relative",
         overflow: "hidden",
         cursor: "pointer",
+        borderRadius: "4px",
         "&:hover div:nth-child(2)": {
             bottom: 0,
         },
@@ -77,6 +78,24 @@ export default function MediaCard(props) {
     const genre = genres.find((item) => item.id === props.genre_ids[0]) || {
         name: "Action",
     };
+    const ratingCalc = (vote) => {
+        const ratignOfFvie = Math.floor(vote / 2);
+        const result = [];
+        for (let i = 0; i < ratignOfFvie; i++) {
+            result.push(
+                <StarIcon className={classes.rating} key={Math.random()} />
+            );
+        }
+        for (let i = 0; i < 5 - ratignOfFvie; i++) {
+            result.push(
+                <StarBorderIcon
+                    className={classes.rating}
+                    key={Math.random()}
+                />
+            );
+        }
+        return result;
+    };
     return (
         <Box
             className={classes.card}
@@ -104,13 +123,7 @@ export default function MediaCard(props) {
                         ? props.release_date.slice(0, 4)
                         : props.first_air_date.slice(0, 4)}
                 </Typography>
-                <Box mb={1}>
-                    <StarIcon className={classes.rating} />
-                    <StarIcon className={classes.rating} />
-                    <StarIcon className={classes.rating} />
-                    <StarIcon className={classes.rating} />
-                    <StarBorderIcon className={classes.rating} />
-                </Box>
+                <Box mb={1}>{ratingCalc(props.vote_average)}</Box>
                 <Box className={classes.tags} mb={2}>
                     <Chip color="secondary" label={genre.name} size="small" />
                 </Box>

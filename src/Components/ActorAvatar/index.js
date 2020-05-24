@@ -1,15 +1,5 @@
 import React from "react";
 import { Typography, Link, Box, Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
-    hover: {
-        "&:hover": {
-            color: "#dd003f",
-            transition: "0.5s",
-        },
-    },
-}));
 
 export default function ActorAvatar({
     name = "Nader Alfakesh",
@@ -18,7 +8,6 @@ export default function ActorAvatar({
     link = "#",
     knownFor = "Popular movie",
 }) {
-    const classes = useStyles();
     return (
         <Box my={3}>
             <Link href={link}>

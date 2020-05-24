@@ -7,7 +7,7 @@ import {
 
 let theme = createMuiTheme({
     palette: {
-        // type: "light",
+        // type: "dark",
         primary: { main: "#0f2133" },
         // secondary: default is ok
         success: { main: "#dcf836" },

@@ -40,7 +40,7 @@ export default function HomeSection({
                     <Link
                         className={classes.hover}
                         color="textPrimary"
-                        href={link}
+                        href={process.env.PUBLIC_URL + link}
                         variant="h6"
                     >
                         VIEW ALL >
