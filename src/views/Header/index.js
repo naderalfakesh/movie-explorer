@@ -8,7 +8,7 @@ import HeaderSlider from "../../views/HeaderSlider";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        height: "100vh",
+        minHeight: "100vh",
         backgroundColor: "rgba(0,0,0,.2)",
         position: "relative",
         "&::before": {

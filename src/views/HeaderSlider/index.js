@@ -13,11 +13,11 @@ const settings = {
 export default function HeaderSlider() {
     const [movieList, setMovieList] = useState([]);
     useEffect(() => {
-        getMovies("now_playing").then((json) => setMovieList(json.results));
+        getMovies("upcoming").then((json) => setMovieList(json.results));
     }, []);
     return (
         <Container maxWidth="lg">
-            <Box mt={3}>
+            <Box mt={3} pb={2}>
                 <Slider {...settings}>
                     {movieList.map((movie) => (
                         <MovieCard {...movie} key={movie.title} />

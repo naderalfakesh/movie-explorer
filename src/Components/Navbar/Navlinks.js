@@ -31,7 +31,7 @@ const list = [
         name: "Tv shows",
         url: "/series",
         subList: [
-            { name: "Most recent", url: "/series/recent" },
+            { name: "On Air", url: "/series/on_air" },
             { name: "Most popular", url: "/series/popular" },
             { name: "Best rated", url: "/series/rated" },
         ],
