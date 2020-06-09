@@ -30,7 +30,16 @@ const getFilteredMovies = (genere, rating, year, sort = "popularity.desc") => {
             URL +
             `&vote_average.gte=${rating[0]}&vote_average.lte=${rating[1]}`;
     if (year) URL = URL + `&year=${year}`;
-    console.log(URL);
+    return fetchAPI(URL);
+};
+const getFilteredSeries = (genere, rating, year, sort = "popularity.desc") => {
+    let URL = `${BASE_URL}/discover/tv?api_key=${API_KEY}&sort_by=${sort}`;
+    if (genere) URL = URL + `&with_genres=${genere}`;
+    if (rating)
+        URL =
+            URL +
+            `&vote_average.gte=${rating[0]}&vote_average.lte=${rating[1]}`;
+    if (year) URL = URL + `&first_air_date_year=${year}`;
     return fetchAPI(URL);
 };
 export {
@@ -41,4 +50,5 @@ export {
     getSerie,
     getTrendingPersons,
     getFilteredMovies,
+    getFilteredSeries,
 };

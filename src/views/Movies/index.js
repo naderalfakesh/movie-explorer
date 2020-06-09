@@ -31,7 +31,6 @@ export default function Movies({ variant = "popular" }) {
     });
 
     useEffect(() => {
-        console.log(filter);
         getFilteredMovies(filter.genre, filter.rating, filter.year).then(
             (data) => {
                 setMoviesArray(data.results);
@@ -43,6 +42,7 @@ export default function Movies({ variant = "popular" }) {
             }
         );
     }, [filter]);
+
     const handlePageChange = (value) => {
         setMoviesPagination({ ...moviesPagination, page: value });
     };

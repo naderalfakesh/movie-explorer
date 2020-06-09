@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getSeries } from "../../Components/API";
+import { getSeries, getFilteredSeries } from "../../Components/API";
 import SeriesList from "../../Components/PaginatedList";
 import Filter from "../../Components/Filter";
 import { Container, Box, Grid } from "@material-ui/core";
@@ -22,9 +22,34 @@ export default function Series({ variant = "popular" }) {
             });
         });
     }, [seriesPagination.page, variant]);
+
+    const [filter, setFilter] = useState({
+        genre: "",
+        rating: "",
+        year: "",
+    });
+
+    useEffect(() => {
+        getFilteredSeries(filter.genre, filter.rating, filter.year).then(
+            (data) => {
+                setSeriesArray(data.results);
+                setSeriesPagination({
+                    page: data.page,
+                    total_results: data.total_results,
+                    total_pages: data.total_pages,
+                });
+            }
+        );
+    }, [filter]);
+
     const handlePageChange = (value) => {
         setSeriesPagination({ ...seriesPagination, page: value });
     };
+
+    const handleFilter = (genre, rating, year) => {
+        setFilter({ genre, rating, year });
+    };
+
     return (
         <Container maxWidth="lg">
             <Box my={5}>
@@ -40,7 +65,7 @@ export default function Series({ variant = "popular" }) {
                         />
                     </Grid>
                     <Grid item xs={3}>
-                        <Filter />
+                        <Filter handleFilter={handleFilter} />
                     </Grid>
                 </Grid>
             </Box>
