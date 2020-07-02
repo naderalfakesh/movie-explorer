@@ -13,13 +13,6 @@ import {
 } from "@material-ui/core";
 import Stars from "./Stars";
 
-const useStyles = makeStyles((theme) => ({
-    rating: {
-        color: "#f5b50a",
-        fontSize: "1em",
-    },
-}));
-
 export default function MovieDetails() {
     const { id } = useParams();
     const [movie, setMovie] = useState();
@@ -74,18 +67,20 @@ export default function MovieDetails() {
         },
         details: {
             color: "#C7C1BA",
-            // textShadow: "2px 2px 5px rgba(0, 0, 0, 1)",
             "& >*": {
                 marginRight: theme.spacing(2),
             },
         },
         likes: {
             color: "#C7C1BA",
-            // textShadow: "2px 2px 5px rgba(0, 0, 0, 1)",
             "& span": {
                 color: "red",
                 marginRight: theme.spacing(1),
             },
+        },
+        overview: {
+            color: "#B1B0AC",
+            fontWeight: "bold",
         },
     }));
 
@@ -131,10 +126,14 @@ export default function MovieDetails() {
                                     variant="h6"
                                     className={classes.tag}
                                 >
-                                    {movie.tagline}
+                                    {movie.tagline || movie.original_title}
                                 </Typography>
 
-                                <Box display="flex" className={classes.details}>
+                                <Box
+                                    display="flex"
+                                    className={classes.details}
+                                    mt={2}
+                                >
                                     <Stars rating={movie.vote_average} />
                                     <Typography className={classes.likes}>
                                         <span>❤️</span>
@@ -152,8 +151,10 @@ export default function MovieDetails() {
                                     <Typography></Typography>
                                 </Box>
                             </Box>
-                            <Box>
-                                <Typography>{movie.overview}</Typography>
+                            <Box mt={10}>
+                                <Typography className={classes.overview}>
+                                    {movie.overview}
+                                </Typography>
                             </Box>
                         </Grid>
                     </Grid>
