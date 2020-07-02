@@ -3,6 +3,7 @@ import { Typography, Link, Box, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "../../../Components/Slider";
 import MovieCard from "../../Movies/MediaCard";
+import { Link as routerLink } from "react-router-dom";
 
 const settings = {
     slidesToShow: 4,
@@ -38,9 +39,10 @@ export default function HomeSection({
                 </Grid>
                 <Grid item>
                     <Link
+                        component={routerLink}
                         className={classes.hover}
                         color="textPrimary"
-                        href={process.env.PUBLIC_URL + link}
+                        to={link}
                         variant="h6"
                     >
                         VIEW ALL >
