@@ -3,7 +3,15 @@ import { useParams } from "react-router-dom";
 import { getMovie } from "../../../Components/API";
 import { imageBaseURL } from "../../../Components/API/constants";
 import { makeStyles } from "@material-ui/core/styles";
-import { Hidden } from "@material-ui/core";
+import {
+    Grid,
+    Box,
+    Container,
+    Chip,
+    Typography,
+    Link,
+} from "@material-ui/core";
+import Stars from "./Stars";
 
 const useStyles = makeStyles((theme) => ({
     rating: {
@@ -20,11 +28,20 @@ export default function MovieDetails() {
     }, [id]);
     const background = movie ? imageBaseURL(1280) + movie.backdrop_path : "";
     const useStyles = makeStyles((theme) => ({
+        container: {
+            position: "relative",
+            minHeight: "70vh",
+            overflow: "hidden",
+            zIndex: -2,
+            backgroundColor: theme.palette.grey[200],
+        },
         wrapper: {
+            marginBottom: theme.spacing(5),
+
             "&:before": {
                 content: '""',
                 width: "100%",
-                height: "100%",
+                height: "70vh",
                 position: "absolute",
                 overflow: "hidden",
                 top: 0,
@@ -38,10 +55,37 @@ export default function MovieDetails() {
                 transformOrigin: "0 0",
             },
         },
-        container: {
-            position: "relative",
-            minHeight: "200px",
-            overflow: "hidden",
+        chips: {
+            display: "flex",
+            justifyContent: "center",
+            flexWrap: "wrap",
+            "& > *": {
+                margin: theme.spacing(0.5),
+                backgroundColor: "white",
+            },
+        },
+        title: {
+            color: "white",
+            textShadow: "2px 2px 5px rgba(0, 0, 0, 1)",
+        },
+        tag: {
+            color: "#C7C1BA",
+            textShadow: "2px 2px 5px rgba(0, 0, 0, 1)",
+        },
+        details: {
+            color: "#C7C1BA",
+            // textShadow: "2px 2px 5px rgba(0, 0, 0, 1)",
+            "& >*": {
+                marginRight: theme.spacing(2),
+            },
+        },
+        likes: {
+            color: "#C7C1BA",
+            // textShadow: "2px 2px 5px rgba(0, 0, 0, 1)",
+            "& span": {
+                color: "red",
+                marginRight: theme.spacing(1),
+            },
         },
     }));
 
@@ -50,23 +94,70 @@ export default function MovieDetails() {
     return movie ? (
         <div className={classes.container}>
             <div className={classes.wrapper}>
-                {/* <img
-                    src={imageBaseURL(1280) + movie.backdrop_path}
-                    alt="banner"
-                /> */}
-                <img src={imageBaseURL(200) + movie.poster_path} alt="Poster" />
-                <p>{movie.original_title}</p>
-                <p>{movie.homepage}</p>
-                <p>{movie.overview}</p>
-                <p>{movie.release_date}</p>
-                <p>{movie.runtime}</p>
-                <p>{movie.status}</p>
-                <p>{movie.tagline}</p>
-                <p>{movie.vote_average}</p>
-                <p>{movie.vote_count}</p>
-                {movie.genres.map((g) => (
-                    <p>{g.name}</p>
-                ))}
+                <Container maxWidth="md">
+                    <Grid container spacing={10}>
+                        <Grid item xs={3}>
+                            <Box mt={"30vh"}>
+                                <Link href={movie.homepage}>
+                                    <img
+                                        src={
+                                            imageBaseURL(200) +
+                                            movie.poster_path
+                                        }
+                                        alt="Poster"
+                                        width="100%"
+                                    />
+                                </Link>
+                                <div className={classes.chips}>
+                                    {movie.genres.map((g) => (
+                                        <Chip
+                                            key={g.name}
+                                            label={g.name}
+                                            variant="outlined"
+                                        />
+                                    ))}
+                                </div>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={9}>
+                            <Box mt={"30vh"}>
+                                <Typography
+                                    variant="h1"
+                                    className={classes.title}
+                                >
+                                    {movie.original_title}
+                                </Typography>
+                                <Typography
+                                    variant="h6"
+                                    className={classes.tag}
+                                >
+                                    {movie.tagline}
+                                </Typography>
+
+                                <Box display="flex" className={classes.details}>
+                                    <Stars rating={movie.vote_average} />
+                                    <Typography className={classes.likes}>
+                                        <span>❤️</span>
+                                        {movie.vote_count}
+                                    </Typography>
+                                </Box>
+                                <Box display="flex" className={classes.details}>
+                                    <Typography>{movie.runtime}Min</Typography>
+                                    <Typography>
+                                        {movie.release_date}
+                                    </Typography>
+                                    <Typography>
+                                        Status: {movie.status}
+                                    </Typography>
+                                    <Typography></Typography>
+                                </Box>
+                            </Box>
+                            <Box>
+                                <Typography>{movie.overview}</Typography>
+                            </Box>
+                        </Grid>
+                    </Grid>
+                </Container>
             </div>
         </div>
     ) : (
