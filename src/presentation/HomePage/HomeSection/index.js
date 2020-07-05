@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, Link, Box, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "../../../Components/Slider";
-import MovieCard from "../../Mediacard";
+import MovieCard from "../../MediaCard";
 import { Link as routerLink } from "react-router-dom";
 
 const settings = {

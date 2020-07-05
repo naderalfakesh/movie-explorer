@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Header from "./views/Header";
-import Footer from "./views/Footer";
+import Header from "./container/Header";
+import Footer from "./container/Footer";
 import HomePage from "./container/HomePage";
-import Movies from "./views/Movies";
+import Movies from "./container/MoviesPage";
 import Series from "./views/Series";
-import MovieDetails from "./views/Movies/MovieDetails";
+import MovieDetails from "./container/MovieDetailsPage";
 import SerieDetails from "./views/Series/SerieDetails";
 import Colors from "./views/theme/Colors";
 
