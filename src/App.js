@@ -4,9 +4,9 @@ import Header from "./container/Header";
 import Footer from "./container/Footer";
 import HomePage from "./container/HomePage";
 import Movies from "./container/MoviesPage";
-import Series from "./views/Series";
 import MovieDetails from "./container/MovieDetailsPage";
-import SerieDetails from "./views/Series/SerieDetails";
+import Series from "./container/SeriesPage";
+import SerieDetails from "./container/SerieDetailsPage";
 import Colors from "./views/theme/Colors";
 
 class App extends React.Component {
