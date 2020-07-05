@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Header from "./views/Header";
 import Footer from "./views/Footer";
-import Home from "./views/Home";
+import HomePage from "./container/HomePage";
 import Movies from "./views/Movies";
 import Series from "./views/Series";
 import MovieDetails from "./views/Movies/MovieDetails";
@@ -16,7 +16,7 @@ class App extends React.Component {
                 <Header />
                 <Switch>
                     <Route exact path="/">
-                        <Home />
+                        <HomePage />
                     </Route>
                     <Route exact path="/movies/rated">
                         <Movies variant="top_rated" />
