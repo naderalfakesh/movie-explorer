@@ -72,8 +72,8 @@ export default function SearchBar() {
                 </FormControl>
                 <InputBase
                     className={classes.input}
-                    placeholder="Search Google Maps"
-                    inputProps={{ "aria-label": "search google maps" }}
+                    placeholder="Search Movie,Tv show , cast member ....."
+                    inputProps={{ "aria-label": "search" }}
                 />
                 <IconButton
                     type="submit"
