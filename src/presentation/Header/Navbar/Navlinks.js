@@ -39,10 +39,6 @@ const list = [
     {
         name: "Cast",
         url: "/cast",
-        subList: [
-            { name: "Most recent", url: "/cast/recent" },
-            { name: "Most popular", url: "/cast/popular" },
-            { name: "Best rated", url: "/cast/rated" },
-        ],
+        subList: [],
     },
 ];

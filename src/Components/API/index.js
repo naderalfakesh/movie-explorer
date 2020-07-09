@@ -14,6 +14,10 @@ const getSeries = (variant = "popular", page = 1) => {
     let URL = `${BASE_URL}/tv/${variant}?api_key=${API_KEY}&language=en-US&page=${page}`;
     return fetchAPI(URL);
 };
+const getPersons = (page = 1) => {
+    let URL = `${BASE_URL}/person/popular?api_key=${API_KEY}&language=en-US&page=${page}`;
+    return fetchAPI(URL);
+};
 const getSerie = (serie_id) => {
     let URL = `${BASE_URL}/tv/${serie_id}?api_key=${API_KEY}`;
     return fetchAPI(URL);
@@ -48,6 +52,7 @@ export {
     getMovie,
     getSeries,
     getSerie,
+    getPersons,
     getTrendingPersons,
     getFilteredMovies,
     getFilteredSeries,

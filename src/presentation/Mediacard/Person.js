@@ -1,12 +1,10 @@
 import React from "react";
 import { Typography, Box, Chip } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { imageBaseURL } from "../../Components/API/constants";
-import StarIcon from "@material-ui/icons/Star";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
-import genres from "../../Components/API/genres";
-import Person from "./Person"
+import { useHistory } from "react-router-dom";
+
+
 const useStyles = makeStyles((theme) => ({
     card: {
         width: imgWidth,
@@ -71,43 +69,21 @@ const useStyles = makeStyles((theme) => ({
 const imgWidth = 200;
 const imgHeight = 300;
 
-export default function MediaCard(props) {
+export default function Person(props) {
     const classes = useStyles();
     let history = useHistory();
-    const { type = "movie" } = props;
-    if(type ==="cast"){return <Person {...props} />}
-    const genre = genres.find((item) => item.id === props.genre_ids[0]) || {
-        name: "Action",
-    };
-    const ratingCalc = (vote) => {
-        const ratignOfFvie = Math.floor(vote / 2);
-        const result = [];
-        for (let i = 0; i < ratignOfFvie; i++) {
-            result.push(
-                <StarIcon className={classes.rating} key={Math.random()} />
-            );
-        }
-        for (let i = 0; i < 5 - ratignOfFvie; i++) {
-            result.push(
-                <StarBorderIcon
-                    className={classes.rating}
-                    key={Math.random()}
-                />
-            );
-        }
-        return result;
-    };
+
     return (
         <Box
             className={classes.card}
-            onClick={() => history.push(`/${type}/${props.id}`)}
+            onClick={() => history.push(`/${props.type}/${props.id}`)}
         >
             <Box className={classes.poster}>
                 <img
                     className={classes.posterImg}
-                    src={`${imageBaseURL(300)}${props.poster_path}`}
-                    alt={props.title || props.name}
-                    key={props.title || props.name}
+                    src={`${imageBaseURL(300)}${props.profile_path}`}
+                    alt={props.name}
+                    key={props.name}
                 />
             </Box>
             <Box className={classes.details}>
@@ -117,19 +93,25 @@ export default function MediaCard(props) {
                     className={classes.title}
                     noWrap
                 >
-                    {props.title || props.name}
+                    {props.name}
                 </Typography>
                 <Typography variant="caption" component="h3">
-                    {type === "movie"
-                        ? props.release_date.slice(0, 4)
-                        : props.first_air_date.slice(0, 4)}
+                    {props.gender === 1 ? "Female" : "Male"}
                 </Typography>
-                <Box mb={1}>{ratingCalc(props.vote_average)}</Box>
+                <Box mb={1}>
+                    
+                    <Typography>Popularity: {props.popularity}</Typography>
+                </Box>
                 <Box className={classes.tags} mb={2}>
-                    <Chip color="secondary" label={genre.name} size="small" />
+                    <Chip
+                        color="secondary"
+                        label={props.known_for_department}
+                        size="small"
+                    />
                 </Box>
                 <Box className={classes.info}>
-                    <Typography>{props.overview.slice(0, 90)}...</Typography>
+                <Typography>Known for:</Typography>
+                    {props.known_for.map(item=><Typography key={item.id}>{item.title || item.name}.</Typography>)}
                 </Box>
             </Box>
         </Box>

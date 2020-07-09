@@ -7,6 +7,8 @@ import Movies from "./container/MoviesPage";
 import MovieDetails from "./container/MovieDetailsPage";
 import Series from "./container/SeriesPage";
 import SerieDetails from "./container/SerieDetailsPage";
+import Cast from "./container/CastPage";
+import CastDetails from "./container/CastDetailsPage";
 import Colors from "./views/theme/Colors";
 
 class App extends React.Component {
@@ -42,6 +44,13 @@ class App extends React.Component {
                     </Route>
                     <Route exact path="/serie/:id">
                         <SerieDetails />
+                    </Route>
+                     
+                    <Route path="/cast">
+                        <Cast />
+                    </Route>
+                    <Route exact path="/cast/:id">
+                        <CastDetails />
                     </Route>
                     <Route exact path="/colors">
                         <Colors />
