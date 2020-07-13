@@ -9,6 +9,7 @@ export default function HeaderContainer() {
         
         history.push(`/search/${type}/${query}`);
         // search(type,query,1).then(console.log)
+        //just testing 
     }
     return <Header handleSearch={handleSearch} />;
 }
