@@ -5,10 +5,15 @@ import SearchBar from "./SearchBar";
 import Social from "./Social";
 import headerBG from "../../assets/headerBG.jpg";
 import HeaderSlider from "./HeaderSlider";
+import { Route , useLocation} from "react-router-dom";
 
+
+export default function Header({ handleSearch }) {
+
+    let location = useLocation();
 const useStyles = makeStyles((theme) => ({
     root: {
-        minHeight: "100vh",
+        minHeight: location.pathname === "/" ? "100vh" : "unset",
         backgroundColor: "rgba(0,0,0,.2)",
         position: "relative",
         "&::before": {
@@ -26,14 +31,15 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Header({handleSearch}) {
     const classes = useStyles();
     return (
         <div className={classes.root}>
             <NavBar />
-            <SearchBar handleSearch={handleSearch}/>
+            <SearchBar handleSearch={handleSearch} />
             <Social />
-            <HeaderSlider />
+            <Route exact path="/">
+                <HeaderSlider />
+            </Route>
         </div>
     );
 }
