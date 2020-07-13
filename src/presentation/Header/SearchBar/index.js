@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
@@ -7,7 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import { Link as routerLink } from "react-router-dom";
+import { Link as routerLink   } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,10 +34,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchBar({handleSearch}) {
     const classes = useStyles();
+    
+
     const [state, setState] = React.useState({
         type: "multi",
         query: "",
     });
+    
+    
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -47,14 +51,16 @@ export default function SearchBar({handleSearch}) {
         });
     };
 
-    const handleClick = () =>{
+    const handleClick = (e) =>{
+        e.preventDefault();
+        setState({type: "multi",query: ""})
         handleSearch(state.type,state.query);
     }
 
     return (
         <Container maxWidth="lg">
-            <Paper component="form" className={classes.root}>
-                <FormControl variant="filled" className={classes.formControl}>
+            <Paper component="form" onSubmit={handleClick} className={classes.root}>
+                <FormControl   variant="filled" className={classes.formControl}>
                     <Select
                         native
                         displayEmpty
@@ -77,8 +83,8 @@ export default function SearchBar({handleSearch}) {
                     className={classes.input}
                     placeholder="Search Movie,Tv show , cast member ....."
                     inputProps={{ "aria-label": "search",name: "query",id: "query", }}
-                        onChange={handleChange}
-                        
+                    onChange={handleChange}
+                    value={state.query}
                 />
                 <IconButton
                     type="submit"

@@ -19,7 +19,7 @@ class App extends React.Component {
                 <Header />
                 <Switch>
                     
-                <Route exact path="/search/:type/:qurery">
+                <Route exact path="/search/:type/:query">
                         <Search />
                 </Route>
 

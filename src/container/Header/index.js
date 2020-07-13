@@ -6,10 +6,8 @@ import Header from "../../presentation/Header";
 export default function HeaderContainer() {
     let history = useHistory();
     const handleSearch = (type,query)=>{
-        
         history.push(`/search/${type}/${query}`);
         // search(type,query,1).then(console.log)
-        //just testing 
     }
     return <Header handleSearch={handleSearch} />;
 }
