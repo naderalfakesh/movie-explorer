@@ -78,7 +78,7 @@ export default function HomeSection({
                     {list.map((movie) => (
                         <MovieCard
                             {...movie}
-                            key={movie.original_title}
+                            key={movie.id}
                             type={type}
                         />
                     ))}

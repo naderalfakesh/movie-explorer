@@ -7,6 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import { Link as routerLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,11 +32,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SearchBar() {
+export default function SearchBar({handleSearch}) {
     const classes = useStyles();
     const [state, setState] = React.useState({
-        age: "",
-        name: "hai",
+        type: "multi",
+        query: "",
     });
 
     const handleChange = (event) => {
@@ -45,40 +46,47 @@ export default function SearchBar() {
             [name]: event.target.value,
         });
     };
+
+    const handleClick = () =>{
+        handleSearch(state.type,state.query);
+    }
+
     return (
         <Container maxWidth="lg">
             <Paper component="form" className={classes.root}>
                 <FormControl variant="filled" className={classes.formControl}>
-                    {/* <InputLabel htmlFor="filled-age-native-simple">
-                        Age
-                    </InputLabel> */}
                     <Select
                         native
                         displayEmpty
-                        value={state.age}
+                        value={state.type}
                         onChange={handleChange}
                         inputProps={{
-                            name: "age",
-                            id: "filled-age-native-simple",
+                            name: "type",
+                            id: "type",
                         }}
                     >
-                        <option aria-label="None" value="">
+                        <option aria-label="None" value={"multi"}>
                             All
                         </option>
-                        <option value={10}>Movie</option>
-                        <option value={20}>TV show</option>
-                        <option value={30}>Cast member</option>
+                        <option value={"movie"}>Movie</option>
+                        <option value={"tv"}>TV show</option>
+                        <option value={"person"}>Cast member</option>
                     </Select>
                 </FormControl>
                 <InputBase
                     className={classes.input}
                     placeholder="Search Movie,Tv show , cast member ....."
-                    inputProps={{ "aria-label": "search" }}
+                    inputProps={{ "aria-label": "search",name: "query",id: "query", }}
+                        onChange={handleChange}
+                        
                 />
                 <IconButton
                     type="submit"
                     className={classes.iconButton}
                     aria-label="search"
+                    onClick={handleClick}
+                    component={routerLink}
+                    to={"/search"}
                 >
                     <SearchIcon />
                 </IconButton>

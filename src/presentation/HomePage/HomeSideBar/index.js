@@ -27,6 +27,7 @@ export default function HomeSideBar() {
             <Divider />
             {actors.map((actor) => (
                 <ActorAvatar
+                    key={actor.name}
                     name={actor.name}
                     profession={actor.known_for_department}
                     img={`${imageBaseURL(92)}${actor.profile_path}`}

@@ -26,12 +26,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Header() {
+export default function Header({handleSearch}) {
     const classes = useStyles();
     return (
         <div className={classes.root}>
             <NavBar />
-            <SearchBar />
+            <SearchBar handleSearch={handleSearch}/>
             <Social />
             <HeaderSlider />
         </div>

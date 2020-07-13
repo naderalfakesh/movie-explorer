@@ -9,6 +9,7 @@ import Series from "./container/SeriesPage";
 import SerieDetails from "./container/SerieDetailsPage";
 import Cast from "./container/CastPage";
 import CastDetails from "./container/CastDetailsPage";
+import Search from "./container/SearchPage";
 import Colors from "./views/theme/Colors";
 
 class App extends React.Component {
@@ -17,6 +18,11 @@ class App extends React.Component {
             <>
                 <Header />
                 <Switch>
+                    
+                <Route exact path="/search/:type/:qurery">
+                        <Search />
+                </Route>
+
                     <Route exact path="/">
                         <HomePage />
                     </Route>
@@ -55,6 +61,8 @@ class App extends React.Component {
                     <Route exact path="/colors">
                         <Colors />
                     </Route>
+
+                    
                 </Switch>
                 <Footer />
             </>

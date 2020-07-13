@@ -30,9 +30,9 @@ const getFilteredMovies = (genere, rating, year, sort = "popularity.desc") => {
     let URL = `${BASE_URL}/discover/movie?api_key=${API_KEY}&sort_by=${sort}`;
     if (genere) URL = URL + `&with_genres=${genere}`;
     if (rating)
-        URL =
-            URL +
-            `&vote_average.gte=${rating[0]}&vote_average.lte=${rating[1]}`;
+    URL =
+    URL +
+    `&vote_average.gte=${rating[0]}&vote_average.lte=${rating[1]}`;
     if (year) URL = URL + `&year=${year}`;
     return fetchAPI(URL);
 };
@@ -40,12 +40,20 @@ const getFilteredSeries = (genere, rating, year, sort = "popularity.desc") => {
     let URL = `${BASE_URL}/discover/tv?api_key=${API_KEY}&sort_by=${sort}`;
     if (genere) URL = URL + `&with_genres=${genere}`;
     if (rating)
-        URL =
-            URL +
-            `&vote_average.gte=${rating[0]}&vote_average.lte=${rating[1]}`;
+    URL =
+    URL +
+    `&vote_average.gte=${rating[0]}&vote_average.lte=${rating[1]}`;
     if (year) URL = URL + `&first_air_date_year=${year}`;
     return fetchAPI(URL);
 };
+
+
+const search = (type = "multi" , query , page = 1 ) => {
+    let URL = `${BASE_URL}/search/${type}?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`;
+    return fetchAPI(URL);
+};
+
+
 export {
     fetchAPI,
     getMovies,
@@ -56,4 +64,5 @@ export {
     getTrendingPersons,
     getFilteredMovies,
     getFilteredSeries,
+    search
 };
