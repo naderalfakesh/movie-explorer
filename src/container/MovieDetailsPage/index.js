@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getMovie } from "../../Components/API";
 import { imageBaseURL } from "../../Components/API/constants";
-import MovieDetails from "../../presentation/MovieDetailsPage"
+import MovieDetails from "../../presentation/DetailsPage";
 
 export default function MovieDetailsContainer() {
     const { id } = useParams();
@@ -15,5 +15,5 @@ export default function MovieDetailsContainer() {
 
     return (
         <MovieDetails movie={movie} background={background} poster={poster} />
-    )
+    );
 }

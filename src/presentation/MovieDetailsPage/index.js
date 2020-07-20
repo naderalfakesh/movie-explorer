@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Stars from "./Stars";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -10,7 +10,7 @@ import {
     Link,
 } from "@material-ui/core";
 
-export default function MovieDetails({movie,background,poster}) {
+export default function MovieDetails({ movie, background, poster }) {
     const useStyles = makeStyles((theme) => ({
         container: {
             position: "relative",
@@ -123,7 +123,9 @@ export default function MovieDetails({movie,background,poster}) {
                                 >
                                     <Stars rating={movie.vote_average} />
                                     <Typography className={classes.likes}>
-                                        <span>❤️</span>
+                                        <span role="img" aria-label="heart">
+                                            ❤️
+                                        </span>
                                         {movie.vote_count}
                                     </Typography>
                                 </Box>

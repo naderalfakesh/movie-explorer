@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Typography, Link } from "@material-ui/core";
+import { Box, Grid, Typography } from "@material-ui/core";
 import Pagination from "@material-ui/lab/Pagination";
 
 export default function BottomBar({ page, total, type, handlePageChange }) {
