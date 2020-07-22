@@ -6,7 +6,7 @@ import { imageBaseURL } from "../../Components/API/constants";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import genres from "../../Components/API/genres";
-import Person from "./Person"
+import Person from "./Person";
 const useStyles = makeStyles((theme) => ({
     card: {
         width: imgWidth,
@@ -75,12 +75,16 @@ export default function MediaCard(props) {
     const classes = useStyles();
     let history = useHistory();
     const { type = "movie" } = props;
-    if(type ==="cast" || type ==="person" ){return <Person {...props} />}
-    let genre=[];
-    if(props.genre_ids){
-        genre = genre.push(genres.find((item) => item.id === props.genre_ids[0]) || {
-            name: "Action",
-        })
+    if (type === "cast" || type === "person" || props.media_type === "person") {
+        return <Person {...props} />;
+    }
+    let genre = [];
+    if (props.genre_ids) {
+        genre = genre.push(
+            genres.find((item) => item.id === props.genre_ids[0]) || {
+                name: "Action",
+            }
+        );
     }
     const ratingCalc = (vote) => {
         const ratignOfFvie = Math.floor(vote / 2);
@@ -125,11 +129,18 @@ export default function MediaCard(props) {
                 <Typography variant="caption" component="h3">
                     {type === "movie"
                         ? props.release_date && props.release_date.slice(0, 4)
-                        : props.first_air_date && props.first_air_date.slice(0, 4)}
+                        : props.first_air_date &&
+                          props.first_air_date.slice(0, 4)}
                 </Typography>
                 <Box mb={1}>{ratingCalc(props.vote_average)}</Box>
                 <Box className={classes.tags} mb={2}>
-                    {genre.length>=0 && <Chip color="secondary" label={genre.name} size="small" />}
+                    {genre.length >= 0 && (
+                        <Chip
+                            color="secondary"
+                            label={genre.name}
+                            size="small"
+                        />
+                    )}
                 </Box>
                 <Box className={classes.info}>
                     <Typography>{props.overview.slice(0, 90)}...</Typography>

@@ -18,10 +18,9 @@ class App extends React.Component {
             <>
                 <Header />
                 <Switch>
-                    
-                <Route exact path="/search/:type/:query">
+                    <Route exact path="/search/:type/:query">
                         <Search />
-                </Route>
+                    </Route>
 
                     <Route exact path="/">
                         <HomePage />
@@ -51,8 +50,8 @@ class App extends React.Component {
                     <Route exact path="/serie/:id">
                         <SerieDetails />
                     </Route>
-                     
-                    <Route path="/cast">
+
+                    <Route exact path="/cast">
                         <Cast />
                     </Route>
                     <Route exact path="/cast/:id">
@@ -61,8 +60,6 @@ class App extends React.Component {
                     <Route exact path="/colors">
                         <Colors />
                     </Route>
-
-                    
                 </Switch>
                 <Footer />
             </>

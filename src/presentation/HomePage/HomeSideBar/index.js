@@ -4,6 +4,7 @@ import ActorAvatar from "../../ActorAvatar";
 import { getTrendingPersons } from "../../../Components/API";
 import { imageBaseURL } from "../../../Components/API/constants";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link as routerLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     hover: {
@@ -31,13 +32,15 @@ export default function HomeSideBar() {
                     name={actor.name}
                     profession={actor.known_for_department}
                     img={`${imageBaseURL(92)}${actor.profile_path}`}
-                    link={"/celebrity/" + actor.id}
+                    link={"/cast/" + actor.id}
                     knownFor={actor.known_for[0].title}
                 />
             ))}
 
             <Link
-                href="/celebrities/"
+                component={routerLink}
+                to="/cast/"
+                href="/cast/"
                 color="textPrimary"
                 className={classes.hover}
             >
