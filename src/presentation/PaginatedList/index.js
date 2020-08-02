@@ -7,6 +7,7 @@ import { Box } from "@material-ui/core";
 export default function PaginatedList({
     list,
     type,
+    searchType,
     page,
     total_results,
     total_pages,
@@ -23,7 +24,7 @@ export default function PaginatedList({
     return (
         <Box>
             <TopBar total={total_results} type={type} />
-            <List list={list} type={type} />
+            <List list={list} type={type} searchType={searchType} />
             <BottomBar
                 page={page}
                 total={total_pages}

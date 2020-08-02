@@ -26,7 +26,7 @@ export default function SeriesPageContainer({ variant = "popular" }) {
         rating: "",
         year: "",
     });
-    
+
     useEffect(() => {
         getFilteredSeries(filter.genre, filter.rating, filter.year).then(
             (data) => {
@@ -51,7 +51,7 @@ export default function SeriesPageContainer({ variant = "popular" }) {
     return (
         <SeriesPage
             list={seriesArray}
-            type="serie"
+            type="tv"
             page={seriesPagination.page}
             total_results={seriesPagination.total_results}
             total_pages={seriesPagination.total_pages}

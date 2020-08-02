@@ -29,7 +29,7 @@ export default function HomePage({
                         <HomeSection
                             title="Series"
                             link="/series"
-                            type="serie"
+                            type="tv"
                             list={series}
                             variantList={seriesVariants}
                             activeVariant={seriesActiveVariant}

@@ -1,10 +1,10 @@
 import React from "react";
-import MoviesList from "../PaginatedList";
+import PaginatedList from "../PaginatedList";
 import { Container, Box, Grid } from "@material-ui/core";
 
 export default function SearchPage({
     list,
-    type,
+    searchType,
     page,
     total_results,
     total_pages,
@@ -15,9 +15,10 @@ export default function SearchPage({
             <Box my={5}>
                 <Grid container alignItems="baseline">
                     <Grid item xs={12}>
-                        <MoviesList
+                        <PaginatedList
                             list={list}
-                            type={type}
+                            type={searchType}
+                            searchType={searchType}
                             page={page}
                             total_results={total_results}
                             total_pages={total_pages}

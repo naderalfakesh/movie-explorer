@@ -21,18 +21,14 @@ export default function CastPageContainer({ variant = "popular" }) {
         });
     }, [personsPagination.page, variant]);
 
-    
-
     const handlePageChange = (value) => {
         setPersonsPagination({ ...personsPagination, page: value });
     };
 
-    
-
     return (
         <CastPage
             list={personsArray}
-            type="cast"
+            type="person"
             page={personsPagination.page}
             total_results={personsPagination.total_results}
             total_pages={personsPagination.total_pages}

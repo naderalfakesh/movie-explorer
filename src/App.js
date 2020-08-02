@@ -47,14 +47,14 @@ class App extends React.Component {
                     <Route path="/series">
                         <Series />
                     </Route>
-                    <Route exact path="/serie/:id">
+                    <Route exact path="/tv/:id">
                         <SerieDetails />
                     </Route>
 
                     <Route exact path="/cast">
                         <Cast />
                     </Route>
-                    <Route exact path="/cast/:id">
+                    <Route exact path="/person/:id">
                         <CastDetails />
                     </Route>
                     <Route exact path="/colors">

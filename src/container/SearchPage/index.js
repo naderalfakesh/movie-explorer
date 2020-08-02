@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { search } from "../../Components/API";
-import MoviesPage from "../../presentation/SearchPage";
+import SearchPage from "../../presentation/SearchPage";
 import { useParams } from "react-router-dom";
 
 export default function SearchPageContainer() {
-    const { type,query } = useParams();
-    console.log(type,query)
+    const { type, query } = useParams();
     const [resultsArray, setResultsArray] = useState([]);
 
     const [resultsPagination, setResultsPagination] = useState({
@@ -15,7 +14,7 @@ export default function SearchPageContainer() {
     });
 
     useEffect(() => {
-        search(type , query , resultsPagination.page).then((data) => {
+        search(type, query, resultsPagination.page).then((data) => {
             setResultsArray(data.results);
             setResultsPagination({
                 page: data.page,
@@ -23,15 +22,15 @@ export default function SearchPageContainer() {
                 total_pages: data.total_pages,
             });
         });
-    }, [resultsPagination.page, type,query]);
+    }, [resultsPagination.page, type, query]);
 
     const handlePageChange = (value) => {
         setResultsPagination({ ...resultsPagination, page: value });
     };
     return (
-        <MoviesPage
+        <SearchPage
             list={resultsArray}
-            type={type}
+            searchType={type}
             page={resultsPagination.page}
             total_results={resultsPagination.total_results}
             total_pages={resultsPagination.total_pages}

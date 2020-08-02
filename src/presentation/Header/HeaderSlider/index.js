@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Container,Box } from "@material-ui/core";
+import { Container, Box } from "@material-ui/core";
 import { getMovies } from "../../../Components/API";
-import MovieCard from "../../MediaCard";
+import MediaCard from "../../../container/MediaCard";
 import Slider from "../../../Components/Slider";
 
 const settings = {
@@ -19,7 +19,7 @@ export default function HeaderSlider() {
             <Box mt={3} pb={2}>
                 <Slider {...settings}>
                     {movieList.map((movie) => (
-                        <MovieCard {...movie} key={movie.title} />
+                        <MediaCard {...movie} key={movie.title} />
                     ))}
                 </Slider>
             </Box>

@@ -56,7 +56,7 @@ export default function Filter({ handleFilter }) {
                                 handleFilter(genre, rating, year);
                             }}
                         >
-                            Secondary
+                            Apply
                         </Button>
                     </Grid>
                 </Grid>

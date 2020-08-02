@@ -1,5 +1,5 @@
 import React from "react";
-import MovieCard from "../MediaCard";
+import MediaCard from "../../container/MediaCard";
 import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
     wrapper: {
@@ -8,12 +8,12 @@ const useStyles = makeStyles((theme) => ({
         gridGap: theme.spacing(3),
     },
 }));
-export default function PaginatedList({ list, type }) {
+export default function PaginatedList({ list, type, searchType }) {
     const classes = useStyles();
     return (
         <div className={classes.wrapper}>
             {list.map((movie) => (
-                <MovieCard {...movie} type={type} key={movie.id} />
+                <MediaCard {...movie} type={type} key={movie.id} />
             ))}
         </div>
     );

@@ -2,12 +2,30 @@ import React from "react";
 import { Typography, Link, Box, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "../../../Components/Slider";
-import MovieCard from "../../MediaCard";
+import MediaCard from "../../../container/MediaCard";
 import { Link as routerLink } from "react-router-dom";
 
 const settings = {
     slidesToShow: 4,
     slidesToScroll: 4,
+    breakpoints: {
+        xs: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+        },
+        sm: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+        },
+        md: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+        },
+        lg: {
+            slidesToShow: 4,
+            slidesToScroll: 4,
+        },
+    },
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -64,7 +82,7 @@ export default function HomeSection({
                                 variant="subtitle1"
                                 onClick={(event) => {
                                     event.preventDefault();
-                                    handleChange(type,variant);
+                                    handleChange(type, variant);
                                 }}
                             >
                                 #{variant.toUpperCase()}
@@ -76,11 +94,7 @@ export default function HomeSection({
             <Box>
                 <Slider {...settings}>
                     {list.map((movie) => (
-                        <MovieCard
-                            {...movie}
-                            key={movie.id}
-                            type={type}
-                        />
+                        <MediaCard {...movie} key={movie.id} type={type} />
                     ))}
                 </Slider>
             </Box>

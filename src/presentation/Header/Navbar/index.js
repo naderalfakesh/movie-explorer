@@ -7,7 +7,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import Navlinks from "./Navlinks";
 import Login from "./Login";
-import ElevationScroll from "./ElevationScroll";
 
 const useStyles = makeStyles((theme) => ({
     navigation: {
@@ -30,31 +29,28 @@ export default function ElevateAppBar(props) {
 
     return (
         <React.Fragment>
-            <ElevationScroll {...props}>
-                <AppBar
-                    color="transparent"
-                    elevation={0}
-                    className={classes.AppBar}
-                    position="static"
-                >
-                    <Container maxWidth="lg">
-                        <Toolbar>
-                            <IconButton
-                                edge="start"
-                                className={classes.menuButton}
-                                aria-label="menu"
-                            >
-                                <MenuIcon />
-                            </IconButton>
-                            <div className={classes.navigation}>
-                                <Navlinks />
-                                <Login />
-                            </div>
-                        </Toolbar>
-                    </Container>
-                </AppBar>
-            </ElevationScroll>
-            {/* <Toolbar /> */}
+            <AppBar
+                color="transparent"
+                elevation={0}
+                className={classes.AppBar}
+                position="static"
+            >
+                <Container maxWidth="lg">
+                    <Toolbar>
+                        <IconButton
+                            edge="start"
+                            className={classes.menuButton}
+                            aria-label="menu"
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <div className={classes.navigation}>
+                            <Navlinks />
+                            <Login />
+                        </div>
+                    </Toolbar>
+                </Container>
+            </AppBar>
         </React.Fragment>
     );
 }

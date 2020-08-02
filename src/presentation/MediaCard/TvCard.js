@@ -1,84 +1,19 @@
 import React from "react";
 import { Typography, Box, Chip } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
 import { imageBaseURL } from "../../Components/API/constants";
 import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import genres from "../../Components/API/genres";
-import Person from "./PersonCard";
-import MovieCard from "./MovieCard";
-const useStyles = makeStyles((theme) => ({
-    card: {
-        width: imgWidth,
-        height: imgHeight,
-        background: theme.palette.primary.main,
-        position: "relative",
-        overflow: "hidden",
-        cursor: "pointer",
-        borderRadius: "4px",
-        "&:hover div:nth-child(2)": {
-            bottom: 0,
-        },
-        "&:hover div:nth-child(1)::before": {
-            bottom: 0,
-        },
-        "&:hover img": {
-            filter: "blur(5px)",
-            transform: "translateY(-50px)",
-        },
-    },
-    poster: {
-        position: "relative",
-        overflow: "hidden",
-        "&::before": {
-            content: '""',
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            bottom: -140,
-            left: 0,
-            zIndex: 1,
-            background: "linear-gradient(0deg, #000 50%, transparent)",
-            transition: "0.5s",
-        },
-    },
-    posterImg: {
-        width: "100%",
-        objectFit: "cover",
-        transition: "0.5s",
-    },
-    details: {
-        color: "#fff",
-        position: "absolute",
-        height: "90%",
-        width: "100%",
-        boxSizing: "border-box",
-        padding: theme.spacing(2),
-        bottom: -140,
-        left: 0,
-        transition: "0.5s",
-        zIndex: 2,
-    },
-    title: {
-        fontWeight: 900,
-    },
-    rating: {
-        color: "#f5b50a",
-        fontSize: "1em",
-    },
-}));
+import useStyles from "./style";
 
 const imgWidth = 200;
 const imgHeight = 300;
 
 export default function MediaCard(props) {
-    const classes = useStyles();
+    const classes = useStyles({ imgWidth, imgHeight });
     let history = useHistory();
     const { type = "movie" } = props;
-    if (type === "cast" || type === "person" || props.media_type === "person") {
-        return <Person {...props} />;
-    }
     let genre = [];
     if (props.genre_ids) {
         genre = genre.push(
@@ -105,9 +40,6 @@ export default function MediaCard(props) {
         }
         return result;
     };
-    if (type === "movie") {
-        return <MovieCard {...props} />;
-    }
     return (
         <Box
             className={classes.card}
@@ -121,6 +53,7 @@ export default function MediaCard(props) {
                     key={props.title || props.name}
                 />
             </Box>
+
             <Box className={classes.details}>
                 <Typography
                     variant="h6"
@@ -147,8 +80,13 @@ export default function MediaCard(props) {
                     )}
                 </Box>
                 <Box className={classes.info}>
-                    <Typography>{props.overview.slice(0, 90)}...</Typography>
+                    <Typography>
+                        {props.overview && props.overview.slice(0, 90)}...
+                    </Typography>
                 </Box>
+            </Box>
+            <Box className={classes.type} component="span">
+                {props.type}
             </Box>
         </Box>
     );

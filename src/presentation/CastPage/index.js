@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
 import SeriesList from "../PaginatedList";
 import { Container, Box, Grid } from "@material-ui/core";
 
-export default function SeriesPage({list,type,page,total_results,total_pages,handlePageChange}) {
-    console.log(list)
+export default function SeriesPage({
+    list,
+    type,
+    page,
+    total_results,
+    total_pages,
+    handlePageChange,
+}) {
     return (
         <Container maxWidth="lg">
             <Box my={5}>
@@ -18,10 +24,9 @@ export default function SeriesPage({list,type,page,total_results,total_pages,han
                             handlePageChange={handlePageChange}
                         />
                     </Grid>
-                    <Grid item xs={3}>
-                    </Grid>
+                    <Grid item xs={3}></Grid>
                 </Grid>
             </Box>
         </Container>
-    )
+    );
 }
