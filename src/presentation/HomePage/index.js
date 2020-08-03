@@ -11,12 +11,13 @@ export default function HomePage({
     seriesVariants,
     seriesActiveVariant,
     handleVariantChange,
+    persons,
 }) {
     return (
         <Container maxWidth="lg">
             <Box my={10}>
                 <Grid container justify="space-between" alignItems="baseline">
-                    <Grid item xs={8}>
+                    <Grid item lg={8} md={12} sm={12} xs={12}>
                         <HomeSection
                             title="Movies"
                             link="/movies"
@@ -36,9 +37,9 @@ export default function HomePage({
                             handleChange={handleVariantChange}
                         />
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item lg={4} md={12} sm={12} xs={12}>
                         <Box pl={5}>
-                            <HomeSideBar />
+                            <HomeSideBar persons={persons} />
                         </Box>
                     </Grid>
                 </Grid>

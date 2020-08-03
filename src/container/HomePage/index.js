@@ -1,37 +1,49 @@
 import React, { useState, useEffect } from "react";
-import { getMovies, getSeries } from "../../Components/API";
-import HomePage from "../../presentation/HomePage"
+import { getMovies, getSeries, getTrendingPersons } from "../../Components/API";
+import HomePage from "../../presentation/HomePage";
 
-const MOVIES_VARIANTS= ["popular", "top_rated", "upcoming"];
-const SERIES_VARIANTS= ["popular","top_rated","airing_today","on_the_air"];
+const MOVIES_VARIANTS = ["popular", "top_rated", "upcoming"];
+const SERIES_VARIANTS = ["popular", "top_rated", "airing_today", "on_the_air"];
 
 export default function HomePageContainer() {
     const [movieList, setMovieList] = useState([]);
     const [tvList, setTvList] = useState([]);
-    const [moviesActiveVariant, setMoviesActiveVariant] = useState(MOVIES_VARIANTS[0]);
-    const [seriesActiveVariant, setSeriesActiveVariant] = useState(SERIES_VARIANTS[0]);
+    const [moviesActiveVariant, setMoviesActiveVariant] = useState(
+        MOVIES_VARIANTS[0]
+    );
+    const [seriesActiveVariant, setSeriesActiveVariant] = useState(
+        SERIES_VARIANTS[0]
+    );
+    const [personsList, setPersonsList] = useState([]);
+    useEffect(() => {
+        getTrendingPersons().then((data) =>
+            setPersonsList(data.results.slice(0, 4))
+        );
+    }, []);
 
     useEffect(() => {
         getMovies("popular").then((json) => setMovieList(json.results));
         getSeries("popular").then((json) => setTvList(json.results));
     }, []);
-    const handleVariantChange = (type ="movie",variant="popular") => {
-        if(type==="serie"){
+    const handleVariantChange = (type = "movie", variant = "popular") => {
+        if (type === "serie") {
             getSeries(variant).then((json) => setTvList(json.results));
-            setSeriesActiveVariant(variant)
-        }
-        else{
+            setSeriesActiveVariant(variant);
+        } else {
             getMovies(variant).then((json) => setMovieList(json.results));
-            setMoviesActiveVariant(variant)
+            setMoviesActiveVariant(variant);
         }
     };
-    return <HomePage 
-    movies={movieList}
-    moviesVariants={MOVIES_VARIANTS}
-    moviesActiveVariant={moviesActiveVariant}
-    series={tvList} 
-    seriesVariants={SERIES_VARIANTS}
-    seriesActiveVariant={seriesActiveVariant}
-    handleVariantChange={handleVariantChange} />
-  
+    return (
+        <HomePage
+            movies={movieList}
+            moviesVariants={MOVIES_VARIANTS}
+            moviesActiveVariant={moviesActiveVariant}
+            series={tvList}
+            seriesVariants={SERIES_VARIANTS}
+            seriesActiveVariant={seriesActiveVariant}
+            handleVariantChange={handleVariantChange}
+            persons={personsList}
+        />
+    );
 }

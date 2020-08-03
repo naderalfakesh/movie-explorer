@@ -16,7 +16,7 @@ export default function PaginatedList({
     const APP_BAR_HEIGHT = 64;
     const handlePageChangeAndScroll = (value) => {
         window.scrollTo({
-            top: window.innerHeight - APP_BAR_HEIGHT,
+            top: window.innerHeight / 2 - APP_BAR_HEIGHT,
             behavior: "smooth",
         });
         handlePageChange(value);

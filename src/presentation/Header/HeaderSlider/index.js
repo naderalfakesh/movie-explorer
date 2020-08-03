@@ -7,6 +7,24 @@ import Slider from "../../../Components/Slider";
 const settings = {
     slidesToShow: 4,
     slidesToScroll: 4,
+    breakpoints: {
+        xs: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+        },
+        sm: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+        },
+        md: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+        },
+        lg: {
+            slidesToShow: 4,
+            slidesToScroll: 4,
+        },
+    },
 };
 
 export default function HeaderSlider() {

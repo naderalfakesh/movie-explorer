@@ -10,7 +10,7 @@ export default function ActorAvatar({
     knownFor = "Popular movie",
 }) {
     return (
-        <Box my={3}>
+        <Box>
             <Link component={routerLink} to={link}>
                 <Grid container spacing={3} alignItems={"center"}>
                     <Grid item>

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Typography, Link, Divider } from "@material-ui/core";
+import React from "react";
+import { Typography, Link, Divider, Grid, Box } from "@material-ui/core";
 import ActorAvatar from "../../ActorAvatar";
-import { getTrendingPersons } from "../../../Components/API";
 import { imageBaseURL } from "../../../Components/API/constants";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link as routerLink } from "react-router-dom";
@@ -14,29 +13,27 @@ const useStyles = makeStyles((theme) => ({
         },
     },
 }));
-export default function HomeSideBar() {
+export default function HomeSideBar({ persons }) {
     const classes = useStyles();
-    const [actors, setActors] = useState([]);
-    useEffect(() => {
-        getTrendingPersons().then((data) =>
-            setActors(data.results.slice(0, 4))
-        );
-    }, []);
     return (
         <div>
             <Typography paragraph>SPOTLIGHT CELEBRITIES</Typography>
             <Divider />
-            {actors.map((actor) => (
-                <ActorAvatar
-                    key={actor.name}
-                    name={actor.name}
-                    profession={actor.known_for_department}
-                    img={`${imageBaseURL(92)}${actor.profile_path}`}
-                    link={"/cast/" + actor.id}
-                    knownFor={actor.known_for[0].title}
-                />
-            ))}
-
+            <Box my={3}>
+                <Grid container spacing={3}>
+                    {persons.map((actor) => (
+                        <Grid item key={actor.name} lg={12}>
+                            <ActorAvatar
+                                name={actor.name}
+                                profession={actor.known_for_department}
+                                img={`${imageBaseURL(92)}${actor.profile_path}`}
+                                link={"/person/" + actor.id}
+                                knownFor={actor.known_for[0].title}
+                            />
+                        </Grid>
+                    ))}
+                </Grid>
+            </Box>
             <Link
                 component={routerLink}
                 to="/cast/"
@@ -44,7 +41,7 @@ export default function HomeSideBar() {
                 color="textPrimary"
                 className={classes.hover}
             >
-                SEE ALL CELEBRITIES >
+                SEE ALL CELEBRITIES &gt;
             </Link>
         </div>
     );

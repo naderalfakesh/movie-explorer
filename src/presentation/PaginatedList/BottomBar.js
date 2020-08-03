@@ -8,7 +8,7 @@ export default function BottomBar({ page, total, type, handlePageChange }) {
         handlePageChange(value);
     };
     return (
-        <Box bgcolor="grey.200" mt={3} pl={1} mr={2} py={1}>
+        <Box bgcolor="grey.200" my={3} pl={1} mr={2} py={1}>
             <Grid container alignItems="center" justify="flex-end">
                 <Grid item>
                     <Typography color="textPrimary">

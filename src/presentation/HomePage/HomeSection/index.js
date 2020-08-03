@@ -63,7 +63,7 @@ export default function HomeSection({
                         to={link}
                         variant="h6"
                     >
-                        VIEW ALL >
+                        VIEW ALL &gt;
                     </Link>
                 </Grid>
             </Grid>

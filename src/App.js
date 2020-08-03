@@ -18,12 +18,11 @@ class App extends React.Component {
             <>
                 <Header />
                 <Switch>
-                    <Route exact path="/search/:type/:query">
-                        <Search />
-                    </Route>
-
                     <Route exact path="/">
                         <HomePage />
+                    </Route>
+                    <Route exact path="/search/:type/:query">
+                        <Search />
                     </Route>
                     <Route exact path="/movies/rated">
                         <Movies variant="top_rated" />

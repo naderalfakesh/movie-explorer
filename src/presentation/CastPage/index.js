@@ -14,7 +14,7 @@ export default function SeriesPage({
         <Container maxWidth="lg">
             <Box my={5}>
                 <Grid container alignItems="baseline">
-                    <Grid item xs={9}>
+                    <Grid item xs={12}>
                         <SeriesList
                             list={list}
                             type={type}
@@ -24,7 +24,7 @@ export default function SeriesPage({
                             handlePageChange={handlePageChange}
                         />
                     </Grid>
-                    <Grid item xs={3}></Grid>
+                    {/* <Grid item xs={3}></Grid> */}
                 </Grid>
             </Box>
         </Container>
