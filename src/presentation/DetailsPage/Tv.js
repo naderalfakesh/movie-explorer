@@ -26,7 +26,7 @@ export default function Tv({ data }) {
                     <Typography variant="h1" className={classes.title}>
                         {data.original_name}
                     </Typography>
-                    <Typography variant="subtitle">
+                    <Typography variant="subtitle1">
                         {`${data.number_of_episodes}EP   Status: ${data.status}     ${data.first_air_date}`}
                     </Typography>
                     <Box className={classes.ratings}>

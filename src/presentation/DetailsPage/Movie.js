@@ -29,7 +29,7 @@ export default function Movie({ data }) {
                     <Typography variant="h6">
                         {data.tagline || "Tag line is not available"}
                     </Typography>
-                    <Typography variant="subtitle">
+                    <Typography variant="subtitle1">
                         {`${data.runtime}Min   Status: ${data.status}     ${data.release_date}`}
                     </Typography>
                     <Box className={classes.ratings}>

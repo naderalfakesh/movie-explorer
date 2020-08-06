@@ -6,7 +6,24 @@ const css = makeStyles((theme) => ({
         display: "grid",
         gridTemplateColumns: "1fr 1fr 4fr",
         gridTemplateRows: "repeat(6,1fr)",
+        gridTemplateAreas: `
+        ". .         .         " 
+        ". thumbnail  details  " 
+        ". thumbnail  details  " 
+        ". thumbnail  overview " 
+        ". categories overview " 
+        ". .          overview "`,
         overflow: "hidden",
+        [theme.breakpoints.down("sm")]: {
+            gridTemplateColumns: "1fr 1fr 1fr",
+            gridTemplateAreas: `
+        ". thumbnail  ." 
+        ". thumbnail  ." 
+        "categories categories categories" 
+        "details details details" 
+        "overview overview overview" 
+        "overview overview overview"`,
+        },
     },
     poster: {
         gridColumn: "1/4",
@@ -19,18 +36,24 @@ const css = makeStyles((theme) => ({
         transform: "skewY(-2deg)",
         transformOrigin: "0 0",
         zIndex: 1,
+        [theme.breakpoints.down("sm")]: {
+            gridRow: "1/7",
+        },
     },
     thumbnail: {
-        gridColumn: "2/3",
-        gridRow: "2/5",
+        gridArea: "thumbnail",
         zIndex: 2,
+        [theme.breakpoints.down("sm")]: {
+            marginTop: theme.spacing(5),
+        },
     },
 
     categories: {
-        gridColumn: "2/3",
-        gridRow: "5/6",
+        gridArea: "categories",
         display: "flex",
+        zIndex: 2,
         justifyContent: "center",
+        alignItems: "center",
         flexWrap: "wrap",
         "& > *": {
             margin: theme.spacing(0.5),
@@ -38,19 +61,21 @@ const css = makeStyles((theme) => ({
         },
     },
     movieDetails: {
-        gridColumn: "3/4",
-        gridRow: "2/4",
+        gridArea: "details",
         zIndex: 2,
         paddingLeft: theme.spacing(5),
         color: "#C7C1BA",
         textShadow: "2px 2px 5px rgba(0, 0, 0, 1)",
+        [theme.breakpoints.down("sm")]: {
+            textAlign: "center",
+        },
     },
     overview: {
-        gridColumn: "3/4",
-        gridRow: "4/6",
+        gridArea: "overview",
         color: "#B1B0AC",
         fontWeight: "bold",
         padding: theme.spacing(3, 5),
+        zIndex: 2,
     },
     title: {
         color: "white",
@@ -65,6 +90,9 @@ const css = makeStyles((theme) => ({
         display: "flex",
         "& span": {
             marginRight: theme.spacing(4),
+        },
+        [theme.breakpoints.down("sm")]: {
+            justifyContent: "center",
         },
     },
 }));
