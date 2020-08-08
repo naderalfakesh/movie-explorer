@@ -10,13 +10,17 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(2),
         fontWeight: 900,
         "&:hover": {
-            color: theme.palette.success.main,
+            color: theme.palette.secondary.main,
+        },
+        [theme.breakpoints.down("sm")]: {
+            fontSize: "0.9em",
+            padding: theme.spacing(1),
         },
     },
     arrow: {
         color: theme.palette.text.primary,
         "&:hover": {
-            color: theme.palette.success.main,
+            color: theme.palette.secondary.main,
         },
     },
 }));

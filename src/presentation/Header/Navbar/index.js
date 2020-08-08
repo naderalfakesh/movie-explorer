@@ -2,11 +2,11 @@ import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Container from "@material-ui/core/Container";
-import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import Navlinks from "./Navlinks";
 import Login from "./Login";
+import Fab from "@material-ui/core/Fab";
 
 const useStyles = makeStyles((theme) => ({
     navigation: {
@@ -15,18 +15,25 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "space-between",
         alignItems: "center",
     },
+    hideLinks: {
+        [theme.breakpoints.down("xs")]: {
+            display: "none",
+        },
+    },
     menuButton: {
         marginRight: theme.spacing(2),
         color: theme.palette.text.primary,
+        [theme.breakpoints.up("sm")]: {
+            display: "none",
+        },
     },
     AppBar: {
         paddingTop: theme.spacing(5),
     },
 }));
 
-export default function ElevateAppBar(props) {
+export default function Navbar({ linksList, handleDrawerToggle }) {
     const classes = useStyles();
-
     return (
         <React.Fragment>
             <AppBar
@@ -37,15 +44,20 @@ export default function ElevateAppBar(props) {
             >
                 <Container maxWidth="lg">
                     <Toolbar>
-                        <IconButton
-                            edge="start"
-                            className={classes.menuButton}
-                            aria-label="menu"
-                        >
-                            <MenuIcon />
-                        </IconButton>
                         <div className={classes.navigation}>
-                            <Navlinks />
+                            <Fab
+                                color="secondary"
+                                size="small"
+                                aria-label="open drawer"
+                                className={classes.menuButton}
+                                onClick={handleDrawerToggle}
+                            >
+                                <MenuIcon />
+                            </Fab>
+
+                            <div className={classes.hideLinks}>
+                                <Navlinks linksList={linksList} />
+                            </div>
                             <Login />
                         </div>
                     </Toolbar>

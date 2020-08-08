@@ -1,10 +1,10 @@
 import React from "react";
 import NavLink from "./NavLink";
 
-export default function Navlinks() {
+export default function Navlinks({ linksList }) {
     return (
         <div>
-            {list.map((link, i) => (
+            {linksList.map((link, i) => (
                 <NavLink
                     key={link.url}
                     url={link.url}
@@ -15,30 +15,3 @@ export default function Navlinks() {
         </div>
     );
 }
-
-const list = [
-    { name: "Home", url: "/", subList: [] },
-    {
-        name: "Movies",
-        url: "/movies",
-        subList: [
-            { name: "Most recent", url: "/movies/recent" },
-            { name: "Most popular", url: "/movies/popular" },
-            { name: "Best rated", url: "/movies/rated" },
-        ],
-    },
-    {
-        name: "Tv shows",
-        url: "/series",
-        subList: [
-            { name: "On Air", url: "/series/on_air" },
-            { name: "Most popular", url: "/series/popular" },
-            { name: "Best rated", url: "/series/rated" },
-        ],
-    },
-    {
-        name: "Cast",
-        url: "/cast",
-        subList: [],
-    },
-];

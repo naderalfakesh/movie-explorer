@@ -12,10 +12,17 @@ const useStyles = makeStyles((theme) => ({
             textDecoration: "none",
             color: theme.palette.success.main,
         },
+        [theme.breakpoints.down("sm")]: {
+            fontSize: "0.9em",
+            marginRight: theme.spacing(1),
+        },
     },
     btn: {
         fontWeight: 900,
         fontSize: "1rem",
+        [theme.breakpoints.down("sm")]: {
+            fontSize: "0.9em",
+        },
     },
 }));
 
@@ -35,6 +42,7 @@ export default function Login() {
                 className={classes.btn}
                 variant="contained"
                 color="secondary"
+                size="small"
             >
                 SIGN UP
             </Button>
