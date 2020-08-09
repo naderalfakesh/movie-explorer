@@ -7,11 +7,14 @@ export default function HomePage({
     movies,
     moviesVariants,
     moviesActiveVariant,
+    movieIsLoading,
     series,
     seriesVariants,
     seriesActiveVariant,
+    tvIsLoading,
     handleVariantChange,
     persons,
+    personIsLoading,
 }) {
     return (
         <Container maxWidth="lg">
@@ -26,6 +29,8 @@ export default function HomePage({
                             variantList={moviesVariants}
                             activeVariant={moviesActiveVariant}
                             handleChange={handleVariantChange}
+                            isLoading={movieIsLoading}
+                            key={1}
                         />
                         <HomeSection
                             title="Series"
@@ -35,11 +40,16 @@ export default function HomePage({
                             variantList={seriesVariants}
                             activeVariant={seriesActiveVariant}
                             handleChange={handleVariantChange}
+                            isLoading={tvIsLoading}
+                            key={2}
                         />
                     </Grid>
                     <Grid item lg={4} md={12} sm={12} xs={12}>
                         <Box pl={5}>
-                            <HomeSideBar persons={persons} />
+                            <HomeSideBar
+                                persons={persons}
+                                isLoading={personIsLoading}
+                            />
                         </Box>
                     </Grid>
                 </Grid>

@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { Link as routerLink } from "react-router-dom";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -53,7 +54,7 @@ export default function Navlink({ url, name, subList }) {
                 }}
             >
                 {name}
-                {subList.length > 0 && "⯆"}
+                {subList.length > 0 && <ExpandMoreIcon size="inherit" />}
             </Link>
             {subList.length > 0 && (
                 <Menu

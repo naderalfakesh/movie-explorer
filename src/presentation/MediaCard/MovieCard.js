@@ -46,12 +46,14 @@ export default function MediaCard(props) {
             onClick={() => history.push(`/${type}/${props.id}`)}
         >
             <Box className={classes.poster}>
-                <img
-                    className={classes.posterImg}
-                    src={`${imageBaseURL(300)}${props.poster_path}`}
-                    alt={props.title || props.name}
-                    key={props.title || props.name}
-                />
+                {props.poster_path && (
+                    <img
+                        className={classes.posterImg}
+                        src={`${imageBaseURL(300)}${props.poster_path}`}
+                        alt={props.title || props.name}
+                        key={props.title || props.name}
+                    />
+                )}
             </Box>
 
             <Box className={classes.details}>

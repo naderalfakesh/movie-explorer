@@ -4,7 +4,7 @@ import MoviesPage from "../../presentation/MoviesPage";
 
 export default function MoviesPageContainer({ variant = "popular" }) {
     const [moviesArray, setMoviesArray] = useState([]);
-
+    const [isLoading, setIsLoading] = useState(false);
     const [moviesPagination, setMoviesPagination] = useState({
         page: 1,
         total_results: 0,
@@ -12,6 +12,7 @@ export default function MoviesPageContainer({ variant = "popular" }) {
     });
 
     useEffect(() => {
+        setIsLoading(true);
         getMovies(variant, moviesPagination.page).then((data) => {
             setMoviesArray(data.results);
             setMoviesPagination({
@@ -19,6 +20,7 @@ export default function MoviesPageContainer({ variant = "popular" }) {
                 total_results: data.total_results,
                 total_pages: data.total_pages,
             });
+            setIsLoading(false);
         });
     }, [moviesPagination.page, variant]);
 
@@ -29,6 +31,7 @@ export default function MoviesPageContainer({ variant = "popular" }) {
     });
 
     useEffect(() => {
+        setIsLoading(true);
         getFilteredMovies(filter.genre, filter.rating, filter.year).then(
             (data) => {
                 setMoviesArray(data.results);
@@ -37,6 +40,7 @@ export default function MoviesPageContainer({ variant = "popular" }) {
                     total_results: data.total_results,
                     total_pages: data.total_pages,
                 });
+                setIsLoading(false);
             }
         );
     }, [filter]);
@@ -56,6 +60,7 @@ export default function MoviesPageContainer({ variant = "popular" }) {
             total_pages={moviesPagination.total_pages}
             handlePageChange={handlePageChange}
             handleFilter={handleFilter}
+            isLoading={isLoading}
         />
     );
 }

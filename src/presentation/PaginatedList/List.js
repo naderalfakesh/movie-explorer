@@ -1,6 +1,8 @@
 import React from "react";
 import MediaCard from "../../container/MediaCard";
+import MediaCardSkeleton from "../MediaCard/MediaCardSkeleton";
 import { makeStyles } from "@material-ui/core/styles";
+
 const useStyles = makeStyles((theme) => ({
     wrapper: {
         display: "grid",
@@ -8,13 +10,17 @@ const useStyles = makeStyles((theme) => ({
         gridGap: theme.spacing(3),
     },
 }));
-export default function PaginatedList({ list, type, searchType }) {
+export default function PaginatedList({ list, type, searchType, isLoading }) {
     const classes = useStyles();
     return (
         <div className={classes.wrapper}>
-            {list.map((movie) => (
-                <MediaCard {...movie} type={type} key={movie.id} />
-            ))}
+            {isLoading
+                ? new Array(20)
+                      .fill(1)
+                      .map((item, index) => <MediaCardSkeleton key={index} />)
+                : list.map((item, index) => (
+                      <MediaCard {...item} type={type} key={item.title} />
+                  ))}
         </div>
     );
 }

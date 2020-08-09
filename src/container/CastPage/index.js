@@ -4,6 +4,7 @@ import CastPage from "../../presentation/CastPage";
 
 export default function CastPageContainer({ variant = "popular" }) {
     const [personsArray, setPersonsArray] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const [personsPagination, setPersonsPagination] = useState({
         page: 1,
         total_results: 0,
@@ -11,6 +12,7 @@ export default function CastPageContainer({ variant = "popular" }) {
     });
 
     useEffect(() => {
+        setIsLoading(true);
         getPersons(personsPagination.page).then((data) => {
             setPersonsArray(data.results);
             setPersonsPagination({
@@ -18,6 +20,7 @@ export default function CastPageContainer({ variant = "popular" }) {
                 total_results: data.total_results,
                 total_pages: data.total_pages,
             });
+            setIsLoading(false);
         });
     }, [personsPagination.page, variant]);
 
@@ -33,6 +36,7 @@ export default function CastPageContainer({ variant = "popular" }) {
             total_results={personsPagination.total_results}
             total_pages={personsPagination.total_pages}
             handlePageChange={handlePageChange}
+            isLoading={isLoading}
         />
     );
 }

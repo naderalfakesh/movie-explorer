@@ -7,30 +7,50 @@ const SERIES_VARIANTS = ["popular", "top_rated", "airing_today", "on_the_air"];
 
 export default function HomePageContainer() {
     const [movieList, setMovieList] = useState([]);
+    const [movieIsLoading, setMovieIsLoading] = useState(false);
     const [tvList, setTvList] = useState([]);
+    const [tvIsLoading, setTVIsLoading] = useState(false);
+    const [personsList, setPersonsList] = useState([]);
+    const [personIsLoading, setPersonIsLoading] = useState(false);
     const [moviesActiveVariant, setMoviesActiveVariant] = useState(
         MOVIES_VARIANTS[0]
     );
     const [seriesActiveVariant, setSeriesActiveVariant] = useState(
         SERIES_VARIANTS[0]
     );
-    const [personsList, setPersonsList] = useState([]);
-    useEffect(() => {
-        getTrendingPersons().then((data) =>
-            setPersonsList(data.results.slice(0, 4))
-        );
-    }, []);
 
     useEffect(() => {
-        getMovies("popular").then((json) => setMovieList(json.results));
-        getSeries("popular").then((json) => setTvList(json.results));
+        setMovieIsLoading(true);
+        setTVIsLoading(true);
+        setPersonIsLoading(true);
+        getMovies("popular").then((json) => {
+            setMovieList(json.results);
+            setMovieIsLoading(false);
+        });
+        getSeries("popular").then((json) => {
+            setTvList(json.results);
+            setTVIsLoading(false);
+        });
+        getTrendingPersons().then((data) => {
+            setPersonsList(data.results.slice(0, 4));
+            setPersonIsLoading(false);
+        });
     }, []);
+
     const handleVariantChange = (type = "movie", variant = "popular") => {
-        if (type === "serie") {
-            getSeries(variant).then((json) => setTvList(json.results));
+        if (type === "tv") {
+            setTVIsLoading(true);
+            getSeries(variant).then((json) => {
+                setTvList(json.results);
+                setTVIsLoading(false);
+            });
             setSeriesActiveVariant(variant);
         } else {
-            getMovies(variant).then((json) => setMovieList(json.results));
+            setMovieIsLoading(true);
+            getMovies(variant).then((json) => {
+                setMovieList(json.results);
+                setMovieIsLoading(false);
+            });
             setMoviesActiveVariant(variant);
         }
     };
@@ -39,11 +59,14 @@ export default function HomePageContainer() {
             movies={movieList}
             moviesVariants={MOVIES_VARIANTS}
             moviesActiveVariant={moviesActiveVariant}
+            movieIsLoading={movieIsLoading}
             series={tvList}
             seriesVariants={SERIES_VARIANTS}
             seriesActiveVariant={seriesActiveVariant}
+            tvIsLoading={tvIsLoading}
             handleVariantChange={handleVariantChange}
             persons={personsList}
+            personIsLoading={personIsLoading}
         />
     );
 }

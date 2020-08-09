@@ -9,6 +9,7 @@ export default function SeriesPage({
     total_results,
     total_pages,
     handlePageChange,
+    isLoading = false,
 }) {
     return (
         <Container maxWidth="lg">
@@ -22,6 +23,7 @@ export default function SeriesPage({
                             total_results={total_results}
                             total_pages={total_pages}
                             handlePageChange={handlePageChange}
+                            isLoading={isLoading}
                         />
                     </Grid>
                     {/* <Grid item xs={3}></Grid> */}

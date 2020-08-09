@@ -3,6 +3,7 @@ import { Typography, Link, Box, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "../../../Components/Slider";
 import MediaCard from "../../../container/MediaCard";
+import MediaCardSkeleton from "../../MediaCard/MediaCardSkeleton";
 import { Link as routerLink } from "react-router-dom";
 
 const settings = {
@@ -45,6 +46,7 @@ export default function HomeSection({
     variantList = [],
     activeVariant,
     handleChange,
+    isLoading,
 }) {
     const classes = useStyles();
     return (
@@ -93,9 +95,13 @@ export default function HomeSection({
             </Box>
             <Box>
                 <Slider {...settings}>
-                    {list.map((movie) => (
-                        <MediaCard {...movie} key={movie.id} type={type} />
-                    ))}
+                    {isLoading
+                        ? [0, 1, 2, 3].map((item, index) => (
+                              <MediaCardSkeleton key={index} />
+                          ))
+                        : list.map((item) => (
+                              <MediaCard {...item} key={item.id} type={type} />
+                          ))}
                 </Slider>
             </Box>
         </Box>

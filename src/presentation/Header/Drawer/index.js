@@ -102,10 +102,13 @@ export default function PersistentDrawerLeft({
                 <Divider className={classes.devider} />
                 <List>
                     {linksList.map((link, index) => (
-                        <DrawerLink link={link} key={index} />
+                        <DrawerLink
+                            link={link}
+                            key={index}
+                            handleDrawerToggle={handleDrawerToggle}
+                        />
                     ))}
                 </List>
-                {/* <Divider className={classes.devider} /> */}
             </Drawer>
             <ScrollTop openDrawer={handleDrawerToggle}>
                 <Fab color="secondary" size="small" aria-label="open drawer">

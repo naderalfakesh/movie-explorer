@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 
 export default function SearchPageContainer() {
     const { type, query } = useParams();
+    const [isLoading, setIsLoading] = useState(false);
     const [resultsArray, setResultsArray] = useState([]);
 
     const [resultsPagination, setResultsPagination] = useState({
@@ -14,6 +15,7 @@ export default function SearchPageContainer() {
     });
 
     useEffect(() => {
+        setIsLoading(true);
         search(type, query, resultsPagination.page).then((data) => {
             setResultsArray(data.results);
             setResultsPagination({
@@ -21,6 +23,7 @@ export default function SearchPageContainer() {
                 total_results: data.total_results,
                 total_pages: data.total_pages,
             });
+            setIsLoading(false);
         });
     }, [resultsPagination.page, type, query]);
 
@@ -35,6 +38,7 @@ export default function SearchPageContainer() {
             total_results={resultsPagination.total_results}
             total_pages={resultsPagination.total_pages}
             handlePageChange={handlePageChange}
+            isLoading={isLoading}
         />
     );
 }

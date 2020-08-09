@@ -12,6 +12,7 @@ export default function PaginatedList({
     total_results,
     total_pages,
     handlePageChange,
+    isLoading,
 }) {
     const APP_BAR_HEIGHT = 64;
     const handlePageChangeAndScroll = (value) => {
@@ -24,7 +25,12 @@ export default function PaginatedList({
     return (
         <Box>
             <TopBar total={total_results} type={type} />
-            <List list={list} type={type} searchType={searchType} />
+            <List
+                list={list}
+                type={type}
+                searchType={searchType}
+                isLoading={isLoading}
+            />
             <BottomBar
                 page={page}
                 total={total_pages}

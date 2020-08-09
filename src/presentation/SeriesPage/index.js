@@ -19,6 +19,7 @@ export default function SeriesPage({
     total_pages,
     handlePageChange,
     handleFilter,
+    isLoading = false,
 }) {
     const classes = useStyles();
 
@@ -38,6 +39,7 @@ export default function SeriesPage({
                             total_results={total_results}
                             total_pages={total_pages}
                             handlePageChange={handlePageChange}
+                            isLoading={isLoading}
                         />
                     </Grid>
                     <Grid item lg={3} md={3} sm={12} xs={12}>

@@ -14,7 +14,16 @@ const useStyles = makeStyles((theme) => ({
     },
     Button: {
         margin: 0,
-        padding: 0,
+        padding: theme.spacing(0.5),
+        color: theme.palette.primary.light,
+    },
+    active: {
+        color: theme.palette.secondary.main,
+    },
+    disabled: {
+        "&:disabled": {
+            color: theme.palette.grey.A100,
+        },
     },
 }));
 
@@ -30,23 +39,27 @@ export default function SliderNavigation({
         page * MAX_NUM_OF_STEPS_TO_SHOW,
         (page + 1) * MAX_NUM_OF_STEPS_TO_SHOW
     );
-    console.log(pagedSteps);
     return (
         <Box mt={5}>
             <Grid container justify="center" alignItems="center" spacing={1}>
-                {activeStep > 0 && (
-                    <IconButton
-                        onClick={() => handleClick(activeStep - 1)}
-                        className={classes.Button}
-                    >
-                        <ArrowBackIosIcon className={classes.Icon} />
-                    </IconButton>
-                )}
+                <IconButton
+                    onClick={() => handleClick(activeStep - 1)}
+                    disabled={!(activeStep > 0)}
+                    classes={{
+                        root: `${classes.Button} ${classes.Icon}`,
+                        disabled: classes.disabled,
+                    }}
+                >
+                    <ArrowBackIosIcon size="inherit" />
+                </IconButton>
+
                 {pagedSteps.map((step) => (
                     <Grid item key={step}>
                         <IconButton
                             onClick={() => handleClick(step)}
-                            className={classes.Button}
+                            className={`${classes.Button} ${
+                                step === activeStep ? classes.active : ""
+                            }`}
                             color={
                                 step === activeStep ? "secondary" : "primary"
                             }
@@ -55,14 +68,16 @@ export default function SliderNavigation({
                         </IconButton>
                     </Grid>
                 ))}
-                {activeStep < stepCount - 1 && (
-                    <IconButton
-                        onClick={() => handleClick(activeStep + 1)}
-                        className={classes.Button}
-                    >
-                        <ArrowForwardIosIcon className={classes.Icon} />
-                    </IconButton>
-                )}
+                <IconButton
+                    onClick={() => handleClick(activeStep + 1)}
+                    disabled={!(activeStep < stepCount - 1)}
+                    classes={{
+                        root: `${classes.Button} ${classes.Icon}`,
+                        disabled: classes.disabled,
+                    }}
+                >
+                    <ArrowForwardIosIcon size="inherit" />
+                </IconButton>
             </Grid>
         </Box>
     );

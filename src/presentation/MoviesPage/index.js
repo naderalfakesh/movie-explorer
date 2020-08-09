@@ -11,6 +11,7 @@ export default function MoviesPage({
     total_pages,
     handlePageChange,
     handleFilter,
+    isLoading = false,
 }) {
     return (
         <Container maxWidth="lg">
@@ -24,6 +25,7 @@ export default function MoviesPage({
                             total_results={total_results}
                             total_pages={total_pages}
                             handlePageChange={handlePageChange}
+                            isLoading={isLoading}
                         />
                     </Grid>
                     <Grid item xs={3}>

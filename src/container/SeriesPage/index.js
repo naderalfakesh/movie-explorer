@@ -4,6 +4,7 @@ import SeriesPage from "../../presentation/SeriesPage";
 
 export default function SeriesPageContainer({ variant = "popular" }) {
     const [seriesArray, setSeriesArray] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const [seriesPagination, setSeriesPagination] = useState({
         page: 1,
         total_results: 0,
@@ -11,6 +12,7 @@ export default function SeriesPageContainer({ variant = "popular" }) {
     });
 
     useEffect(() => {
+        setIsLoading(true);
         getSeries(variant, seriesPagination.page).then((data) => {
             setSeriesArray(data.results);
             setSeriesPagination({
@@ -18,6 +20,7 @@ export default function SeriesPageContainer({ variant = "popular" }) {
                 total_results: data.total_results,
                 total_pages: data.total_pages,
             });
+            setIsLoading(false);
         });
     }, [seriesPagination.page, variant]);
 
@@ -28,6 +31,7 @@ export default function SeriesPageContainer({ variant = "popular" }) {
     });
 
     useEffect(() => {
+        setIsLoading(true);
         getFilteredSeries(filter.genre, filter.rating, filter.year).then(
             (data) => {
                 setSeriesArray(data.results);
@@ -36,6 +40,7 @@ export default function SeriesPageContainer({ variant = "popular" }) {
                     total_results: data.total_results,
                     total_pages: data.total_pages,
                 });
+                setIsLoading(false);
             }
         );
     }, [filter]);
@@ -57,6 +62,7 @@ export default function SeriesPageContainer({ variant = "popular" }) {
             total_pages={seriesPagination.total_pages}
             handlePageChange={handlePageChange}
             handleFilter={handleFilter}
+            isLoading={isLoading}
         />
     );
 }
