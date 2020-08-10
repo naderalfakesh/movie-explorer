@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        backgroundColor: theme.palette.grey[50],
+        backgroundColor: theme.palette.primary.main,
         padding: theme.spacing(3, 5),
     },
     avatar: {
@@ -71,14 +71,16 @@ export default function SignIn() {
                         autoComplete="current-password"
                     />
                     <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
+                        control={
+                            <Checkbox value="remember" color="secondary" />
+                        }
                         label="Remember me"
                     />
                     <Button
                         type="submit"
                         fullWidth
                         variant="contained"
-                        color="primary"
+                        color="secondary"
                         className={classes.submit}
                     >
                         Sign In

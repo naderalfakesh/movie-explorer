@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        backgroundColor: theme.palette.grey[50],
+        backgroundColor: theme.palette.primary.main,
         padding: theme.spacing(3, 5),
     },
     avatar: {
@@ -100,7 +100,7 @@ export default function SignUp() {
                                 control={
                                     <Checkbox
                                         value="allowExtraEmails"
-                                        color="primary"
+                                        color="secondary"
                                     />
                                 }
                                 label="I want to receive inspiration, marketing promotions and updates via email."
@@ -111,7 +111,7 @@ export default function SignUp() {
                         type="submit"
                         fullWidth
                         variant="contained"
-                        color="primary"
+                        color="secondary"
                         className={classes.submit}
                     >
                         Sign Up
