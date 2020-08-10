@@ -2,6 +2,7 @@ import React from "react";
 import { Typography, Box, Chip } from "@material-ui/core";
 import { imageBaseURL } from "../../Components/API/constants";
 import { useHistory } from "react-router-dom";
+import BackToTop from "../BackToTop";
 
 import useStyles from "./style";
 
@@ -15,7 +16,10 @@ export default function Person(props) {
     return (
         <Box
             className={classes.card}
-            onClick={() => history.push(`/${props.type}/${props.id}`)}
+            onClick={() => {
+                history.push(`/${props.type}/${props.id}`);
+                BackToTop();
+            }}
         >
             <Box className={classes.poster}>
                 <img

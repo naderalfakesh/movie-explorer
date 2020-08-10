@@ -6,6 +6,7 @@ import StarIcon from "@material-ui/icons/Star";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import genres from "../../Components/API/genres";
 import useStyles from "./style";
+import BackToTop from "../BackToTop";
 
 const imgWidth = 200;
 const imgHeight = 300;
@@ -43,7 +44,10 @@ export default function MediaCard(props) {
     return (
         <Box
             className={classes.card}
-            onClick={() => history.push(`/${type}/${props.id}`)}
+            onClick={() => {
+                history.push(`/${type}/${props.id}`);
+                BackToTop();
+            }}
         >
             <Box className={classes.poster}>
                 <img

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 
 const useStyles = makeStyles((theme) => ({
     hover: {
@@ -28,6 +31,23 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login() {
     const classes = useStyles();
+    const [open, setOpen] = useState(false);
+    const [signIn, setSignIn] = useState(false);
+
+    const handleSignIn = (e) => {
+        e.preventDefault();
+        setSignIn(true);
+        setOpen(true);
+    };
+    const handleSignUp = (e) => {
+        e.preventDefault();
+        setSignIn(false);
+        setOpen(true);
+    };
+    const handleClose = (e) => {
+        setOpen(false);
+        setSignIn(false);
+    };
     return (
         <div>
             <Link
@@ -35,6 +55,7 @@ export default function Login() {
                 href="/"
                 color={"textPrimary"}
                 variant="h6"
+                onClick={handleSignIn}
             >
                 LOG IN
             </Link>
@@ -43,9 +64,18 @@ export default function Login() {
                 variant="contained"
                 color="secondary"
                 size="small"
+                onClick={handleSignUp}
             >
                 SIGN UP
             </Button>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="Signup"
+                aria-describedby="Signup"
+            >
+                {signIn ? <SignIn /> : <SignUp />}
+            </Modal>
         </div>
     );
 }

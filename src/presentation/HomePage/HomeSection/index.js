@@ -5,6 +5,7 @@ import Slider from "../../../Components/Slider";
 import MediaCard from "../../../container/MediaCard";
 import MediaCardSkeleton from "../../MediaCard/MediaCardSkeleton";
 import { Link as routerLink } from "react-router-dom";
+import BackToTop from "../../BackToTop";
 
 const settings = {
     slidesToShow: 4,
@@ -64,6 +65,7 @@ export default function HomeSection({
                         color="textPrimary"
                         to={link}
                         variant="h6"
+                        onClick={() => BackToTop()}
                     >
                         VIEW ALL &gt;
                     </Link>
@@ -96,9 +98,11 @@ export default function HomeSection({
             <Box>
                 <Slider {...settings}>
                     {isLoading
-                        ? [0, 1, 2, 3].map((item, index) => (
-                              <MediaCardSkeleton key={index} />
-                          ))
+                        ? new Array(20)
+                              .fill(1)
+                              .map((item, index) => (
+                                  <MediaCardSkeleton key={index} />
+                              ))
                         : list.map((item) => (
                               <MediaCard {...item} key={item.id} type={type} />
                           ))}

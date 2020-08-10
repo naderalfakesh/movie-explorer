@@ -19,7 +19,7 @@ export default function PaginatedList({ list, type, searchType, isLoading }) {
                       .fill(1)
                       .map((item, index) => <MediaCardSkeleton key={index} />)
                 : list.map((item, index) => (
-                      <MediaCard {...item} type={type} key={item.title} />
+                      <MediaCard {...item} type={type} key={index} />
                   ))}
         </div>
     );

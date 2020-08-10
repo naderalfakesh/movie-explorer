@@ -4,6 +4,7 @@ import ActorAvatar from "../../ActorAvatar";
 import { imageBaseURL } from "../../../Components/API/constants";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link as routerLink } from "react-router-dom";
+import BackToTop from "../../BackToTop";
 
 const useStyles = makeStyles((theme) => ({
     hover: {
@@ -40,6 +41,7 @@ export default function HomeSideBar({ persons }) {
                 href="/cast/"
                 color="textPrimary"
                 className={classes.hover}
+                onClick={() => BackToTop()}
             >
                 SEE ALL CELEBRITIES &gt;
             </Link>

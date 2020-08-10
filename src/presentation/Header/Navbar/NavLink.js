@@ -5,6 +5,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { Link as routerLink } from "react-router-dom";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import BackToTop from "../../BackToTop";
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -50,6 +51,7 @@ export default function Navlink({ url, name, subList }) {
                 key={url}
                 onClick={(e) => {
                     if (subList.length > 0) e.preventDefault();
+                    else if (name !== "Home") BackToTop();
                     handleClick(e);
                 }}
             >
@@ -66,7 +68,10 @@ export default function Navlink({ url, name, subList }) {
                 >
                     {subList.map((item) => (
                         <MenuItem
-                            onClick={handleClose}
+                            onClick={() => {
+                                handleClose();
+                                BackToTop();
+                            }}
                             component={routerLink}
                             to={item.url}
                             key={item.url}

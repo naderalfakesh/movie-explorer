@@ -3,6 +3,7 @@ import TopBar from "./TopBar";
 import List from "./List";
 import BottomBar from "./BottomBar";
 import { Box } from "@material-ui/core";
+import BackToTop from "../BackToTop";
 
 export default function PaginatedList({
     list,
@@ -14,12 +15,8 @@ export default function PaginatedList({
     handlePageChange,
     isLoading,
 }) {
-    const APP_BAR_HEIGHT = 64;
     const handlePageChangeAndScroll = (value) => {
-        window.scrollTo({
-            top: window.innerHeight / 2 - APP_BAR_HEIGHT,
-            behavior: "smooth",
-        });
+        BackToTop();
         handlePageChange(value);
     };
     return (

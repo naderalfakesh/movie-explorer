@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography, Link, Box, Grid } from "@material-ui/core";
 import { Link as routerLink } from "react-router-dom";
+import BackToTop from "../BackToTop";
 
 export default function ActorAvatar({
     name = "Unknown actor",
@@ -11,7 +12,7 @@ export default function ActorAvatar({
 }) {
     return (
         <Box>
-            <Link component={routerLink} to={link}>
+            <Link component={routerLink} to={link} onClick={() => BackToTop()}>
                 <Grid container spacing={3} alignItems={"center"}>
                     <Grid item>
                         <img src={img} alt={name} />

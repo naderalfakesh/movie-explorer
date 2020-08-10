@@ -4,6 +4,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { Collapse } from "@material-ui/core";
 import { Link as routerLink } from "react-router-dom";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import BackToTop from "../../BackToTop";
 
 export default function DrawerLink({ link, handleDrawerToggle }) {
     const [expand, setExpand] = React.useState(false);
@@ -14,6 +15,11 @@ export default function DrawerLink({ link, handleDrawerToggle }) {
             setExpand(!expand);
         } else {
             handleDrawerToggle();
+            if (link.name !== "Home") {
+                BackToTop();
+            } else {
+                BackToTop(0);
+            }
         }
     };
     return (
