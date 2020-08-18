@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: "rgb(232, 240, 254)",
         padding: theme.spacing(3, 5),
     },
     avatar: {
@@ -35,7 +35,10 @@ const useStyles = makeStyles((theme) => ({
 
 const SignIn = React.forwardRef((props, ref) => {
     const classes = useStyles();
-
+    const handleClick = (e) => {
+        e.preventDefault();
+        alert("Sorry Log in feature is not activated yet".toUpperCase());
+    };
     return (
         <Container component="main" maxWidth="xs" ref={ref}>
             <div className={classes.paper}>
@@ -80,6 +83,7 @@ const SignIn = React.forwardRef((props, ref) => {
                         variant="contained"
                         color="secondary"
                         className={classes.submit}
+                        onClick={handleClick}
                     >
                         Sign In
                     </Button>

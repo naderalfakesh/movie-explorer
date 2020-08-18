@@ -6,7 +6,7 @@ import css from "./style.js";
 
 export default function Movie({ data }) {
     const background = data ? imageBaseURL(1280) + data.backdrop_path : "";
-    const poster = data ? imageBaseURL(200) + data.poster_path : "";
+    const poster = data ? imageBaseURL(300) + data.poster_path : "";
     const classes = css({ background });
 
     return (

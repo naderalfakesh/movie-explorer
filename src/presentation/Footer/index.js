@@ -110,7 +110,7 @@ export default function Footer() {
                         </form>
                         <Typography>
                             <Link href="#" color="textPrimary">
-                                SUBSCRIBE NOW >
+                                SUBSCRIBE NOW &gt;
                             </Link>
                         </Typography>
                     </Grid>

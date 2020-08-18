@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const css = makeStyles((theme) => ({
     gridContainer: {
+        // minHeight: "50vh",
         backgroundColor: theme.palette.grey[200],
         display: "grid",
         gridTemplateColumns: "1fr 1fr 4fr",
@@ -30,7 +31,9 @@ const css = makeStyles((theme) => ({
         gridRow: "1/4",
         width: "100%",
         background: theme.palette.grey[200],
-        backgroundImage: (props) => `url(${props.background})`,
+        backgroundImage: (props) =>
+            props.background ? `url(${props.background})` : "none",
+        background: theme.palette.primary.main,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         transform: "skewY(-2deg)",
