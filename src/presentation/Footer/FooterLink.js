@@ -13,12 +13,21 @@ const useStyles = makeStyles((theme) => ({
     padding: {
         paddingBottom: theme.spacing(0.5),
     },
+    inline: {
+        [theme.breakpoints.down("xs")]: {
+            display: "inline-block",
+            padding: theme.spacing(0.5),
+        },
+    },
 }));
 
 export default function FooterLink({ link = "#", label = "label" }) {
     const classes = useStyles();
     return (
-        <Typography variant="body1" className={classes.padding}>
+        <Typography
+            variant="body1"
+            className={`${classes.padding} ${classes.inline}`}
+        >
             <Link href={link} color="textPrimary" className={classes.hover}>
                 {label}
             </Link>

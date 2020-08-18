@@ -14,10 +14,20 @@ import FooterLink from "./FooterLink";
 
 const useStyles = makeStyles((theme) => ({
     wrapper: {
-        height: "50vh",
+        minHeight: "50vh",
         background: `url(${BG})`,
         backgroundSize: "contain",
         color: "white",
+    },
+    footerCenter: {
+        [theme.breakpoints.down("xs")]: {
+            justifyContent: "center",
+        },
+    },
+    gridCenter: {
+        [theme.breakpoints.down("xs")]: {
+            textAlign: "center",
+        },
     },
     input: {
         marginTop: theme.spacing(1.5),
@@ -38,8 +48,14 @@ export default function Footer() {
     return (
         <Box py={5} className={classes.wrapper}>
             <Container maxWidth="lg">
-                <Grid container justify="space-between" spacing={5}>
-                    <Grid item>
+                <Grid
+                    container
+                    justify="space-between"
+                    alignContent="center"
+                    spacing={5}
+                    className={classes.footerCenter}
+                >
+                    <Grid item className={classes.gridCenter}>
                         <img
                             className={classes.logo}
                             src={logo}
@@ -51,7 +67,7 @@ export default function Footer() {
                         </Typography>
                         <Typography>Call us: (+01) 202 342 6789</Typography>
                     </Grid>
-                    <Grid item>
+                    <Grid item className={classes.gridCenter}>
                         <Typography variant="h5" className={classes.title}>
                             Resources
                         </Typography>
@@ -59,7 +75,7 @@ export default function Footer() {
                             <FooterLink link={link} label={label} key={label} />
                         ))}
                     </Grid>
-                    <Grid item>
+                    <Grid item className={classes.gridCenter}>
                         <Typography variant="h5" className={classes.title}>
                             Legal
                         </Typography>
@@ -67,7 +83,7 @@ export default function Footer() {
                             <FooterLink link={link} label={label} key={label} />
                         ))}
                     </Grid>
-                    <Grid item>
+                    <Grid item className={classes.gridCenter}>
                         <Typography variant="h5" className={classes.title}>
                             Account
                         </Typography>
@@ -75,7 +91,7 @@ export default function Footer() {
                             <FooterLink link={link} label={label} key={label} />
                         ))}
                     </Grid>
-                    <Grid item>
+                    <Grid item className={classes.gridCenter}>
                         <Typography variant="h5" className={classes.title}>
                             Newsletter
                         </Typography>

@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
@@ -95,9 +94,14 @@ export default function PersistentDrawerLeft({
                 }}
             >
                 <div className={classes.drawerHeader}>
-                    <IconButton onClick={handleDrawerToggle} color={"inherit"}>
+                    <Fab
+                        color="secondary"
+                        size="small"
+                        aria-label="close drawer"
+                        onClick={handleDrawerToggle}
+                    >
                         <ChevronLeftIcon />
-                    </IconButton>
+                    </Fab>
                 </div>
                 <Divider className={classes.devider} />
                 <List>
