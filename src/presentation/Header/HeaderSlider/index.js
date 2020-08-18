@@ -9,6 +9,7 @@ const settings = {
     slidesToShow: 4,
     slidesToScroll: 4,
     autoplay: true,
+    timeout: 3000,
     breakpoints: {
         xs: {
             slidesToShow: 1,

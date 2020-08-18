@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 export default function TopBar({ total, type }) {
     const classes = useStyles();
     return (
-        <Box bgcolor="grey.200" mb={3} py={1} pl={1} mr={2}>
+        <Box bgcolor="grey.200" mb={3} py={1} px={1}>
             <Typography color="textPrimary">
                 Found <span className={classes.blue}>{total + " " + type}</span>{" "}
                 in total

@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
     reverse: {
-        [theme.breakpoints.down("sm")]: {
+        [theme.breakpoints.up("sm")]: {
             flexDirection: "row-reverse",
         },
     },
@@ -25,12 +25,16 @@ export default function SeriesPage({
 
     return (
         <Container maxWidth="lg">
-            <Box my={5}>
+            <Box my={10} minHeight="100vh">
                 <Grid
                     container
                     alignItems="baseline"
                     className={classes.reverse}
+                    spacing={3}
                 >
+                    <Grid item lg={3} md={3} sm={12} xs={12}>
+                        <Filter handleFilter={handleFilter} />
+                    </Grid>
                     <Grid item lg={9} md={9} sm={12} xs={12}>
                         <SeriesList
                             list={list}
@@ -41,9 +45,6 @@ export default function SeriesPage({
                             handlePageChange={handlePageChange}
                             isLoading={isLoading}
                         />
-                    </Grid>
-                    <Grid item lg={3} md={3} sm={12} xs={12}>
-                        <Filter handleFilter={handleFilter} />
                     </Grid>
                 </Grid>
             </Box>

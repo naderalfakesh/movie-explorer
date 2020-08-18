@@ -1,7 +1,6 @@
 import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -33,13 +32,11 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
     },
 }));
-
-export default function SignUp() {
+const SignUp = React.forwardRef((props, ref) => {
     const classes = useStyles();
 
     return (
-        <Container component="main" maxWidth="xs">
-            <CssBaseline />
+        <Container component="main" maxWidth="xs" ref={ref}>
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
@@ -127,4 +124,6 @@ export default function SignUp() {
             </div>
         </Container>
     );
-}
+});
+
+export default SignUp;

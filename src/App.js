@@ -18,49 +18,47 @@ class App extends React.Component {
             <>
                 <Header />
                 <Switch>
-                    <div style={{ minHeight: "100vh", paddingBottom: "10px" }}>
-                        <Route exact path="/">
-                            <HomePage />
-                        </Route>
-                        <Route exact path="/search/:type/:query">
-                            <Search />
-                        </Route>
-                        <Route exact path="/movies/rated">
-                            <Movies variant="top_rated" />
-                        </Route>
-                        <Route exact path="/movies/recent">
-                            <Movies variant="now_playing" />
-                        </Route>
-                        <Route path="/movies">
-                            <Movies />
-                        </Route>
+                    <Route exact path="/">
+                        <HomePage />
+                    </Route>
+                    <Route exact path="/search/:type/:query">
+                        <Search />
+                    </Route>
+                    <Route exact path="/movies/rated">
+                        <Movies variant="top_rated" />
+                    </Route>
+                    <Route exact path="/movies/recent">
+                        <Movies variant="now_playing" />
+                    </Route>
+                    <Route path="/movies">
+                        <Movies />
+                    </Route>
 
-                        <Route exact path="/movie/:id">
-                            <MovieDetails />
-                        </Route>
-                        <Route exact path="/series/rated">
-                            <Series variant="top_rated" />
-                        </Route>
-                        <Route exact path="/series/on_air">
-                            <Series variant="on_the_air" />
-                        </Route>
-                        <Route path="/series">
-                            <Series />
-                        </Route>
-                        <Route exact path="/tv/:id">
-                            <SerieDetails />
-                        </Route>
+                    <Route exact path="/movie/:id">
+                        <MovieDetails />
+                    </Route>
+                    <Route exact path="/series/rated">
+                        <Series variant="top_rated" />
+                    </Route>
+                    <Route exact path="/series/on_air">
+                        <Series variant="on_the_air" />
+                    </Route>
+                    <Route path="/series">
+                        <Series />
+                    </Route>
+                    <Route exact path="/tv/:id">
+                        <SerieDetails />
+                    </Route>
 
-                        <Route exact path="/cast">
-                            <Cast />
-                        </Route>
-                        <Route exact path="/person/:id">
-                            <CastDetails />
-                        </Route>
-                        <Route exact path="/colors">
-                            <Colors />
-                        </Route>
-                    </div>
+                    <Route exact path="/cast">
+                        <Cast />
+                    </Route>
+                    <Route exact path="/person/:id">
+                        <CastDetails />
+                    </Route>
+                    <Route exact path="/colors">
+                        <Colors />
+                    </Route>
                 </Switch>
                 <Footer />
             </>

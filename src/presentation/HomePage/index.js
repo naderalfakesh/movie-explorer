@@ -18,7 +18,7 @@ export default function HomePage({
 }) {
     return (
         <Container maxWidth="lg">
-            <Box my={10}>
+            <Box my={10} minHeight="100vh">
                 <Grid container justify="space-between" alignItems="baseline">
                     <Grid item lg={8} md={12} sm={12} xs={12}>
                         <HomeSection

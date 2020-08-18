@@ -21,9 +21,16 @@ export default function HomeSideBar({ persons }) {
             <Typography paragraph>SPOTLIGHT CELEBRITIES</Typography>
             <Divider />
             <Box my={3}>
-                <Grid container spacing={3}>
+                <Grid container spacing={3} alignItems="stretch">
                     {persons.map((actor) => (
-                        <Grid item key={actor.name} lg={12}>
+                        <Grid
+                            item
+                            key={actor.name}
+                            lg={12}
+                            md={4}
+                            sm={3}
+                            xs={6}
+                        >
                             <ActorAvatar
                                 name={actor.name}
                                 profession={actor.known_for_department}

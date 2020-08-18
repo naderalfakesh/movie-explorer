@@ -10,7 +10,7 @@ export default function Filter({ handleFilter }) {
     const [year, setYear] = React.useState("");
 
     return (
-        <Box>
+        <Box mb={3}>
             <Typography color="primary" component="h2" variant="h6">
                 SEARCH FOR MOVIE
             </Typography>

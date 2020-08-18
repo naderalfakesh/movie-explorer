@@ -13,7 +13,7 @@ export default function SeriesPage({
 }) {
     return (
         <Container maxWidth="lg">
-            <Box my={5}>
+            <Box my={10} minHeight="100vh">
                 <Grid container alignItems="baseline">
                     <Grid item xs={12}>
                         <SeriesList

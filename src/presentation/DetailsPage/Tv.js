@@ -8,7 +8,7 @@ export default function Tv({ data }) {
     const background = data ? imageBaseURL(1280) + data.backdrop_path : "";
     const poster = data ? imageBaseURL(200) + data.poster_path : "";
     const classes = css({ background });
-    return data ? (
+    return (
         <>
             <div className={classes.gridContainer}>
                 <div className={classes.poster}></div>
@@ -43,7 +43,5 @@ export default function Tv({ data }) {
                 </div>
             </div>
         </>
-    ) : (
-        <div>Getting info</div>
     );
 }

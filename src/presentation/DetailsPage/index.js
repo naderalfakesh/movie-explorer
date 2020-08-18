@@ -2,10 +2,11 @@ import React from "react";
 import Movie from "./Movie";
 import Tv from "./Tv";
 import Person from "./Person";
+import PageSkeleton from "./PageSkeleton";
 
 export default function DetailsPage({ data, type }) {
     if (!data) {
-        return <div>Loading .... </div>;
+        return <PageSkeleton />;
     } else {
         switch (type) {
             case "movie":

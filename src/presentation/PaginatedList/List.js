@@ -8,6 +8,9 @@ const useStyles = makeStyles((theme) => ({
         display: "grid",
         gridTemplateColumns: "repeat( auto-fill, minmax(200px, 1fr))",
         gridGap: theme.spacing(3),
+        "& > *": {
+            justifySelf: "center",
+        },
     },
 }));
 export default function PaginatedList({ list, type, searchType, isLoading }) {

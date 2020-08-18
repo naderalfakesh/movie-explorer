@@ -6,6 +6,9 @@ import Modal from "@material-ui/core/Modal";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
+const SignInRef = React.createRef();
+const SignUpRef = React.createRef();
+
 const useStyles = makeStyles((theme) => ({
     hover: {
         transition: "all 0.3s ease-out",
@@ -74,7 +77,14 @@ export default function Login() {
                 aria-labelledby="Signup"
                 aria-describedby="Signup"
             >
-                {signIn ? <SignIn /> : <SignUp />}
+                {
+                    //Modals needs forward referance in order to be used with custom components
+                    signIn ? (
+                        <SignIn ref={SignInRef} />
+                    ) : (
+                        <SignUp ref={SignUpRef} />
+                    )
+                }
             </Modal>
         </div>
     );
