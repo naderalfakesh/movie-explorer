@@ -17,9 +17,10 @@ const css = makeStyles((theme) => ({
         overflow: "hidden",
         [theme.breakpoints.down("sm")]: {
             gridTemplateColumns: "1fr 1fr 1fr",
+            gridTemplateRows: "1fr",
             gridTemplateAreas: `
-        ". thumbnail  ." 
-        ". thumbnail  ." 
+        "thumbnail thumbnail  thumbnail" 
+        "thumbnail thumbnail  thumbnail" 
         "categories categories categories" 
         "details details details" 
         "overview overview overview" 
@@ -40,14 +41,23 @@ const css = makeStyles((theme) => ({
         transformOrigin: "0 0",
         zIndex: 1,
         [theme.breakpoints.down("sm")]: {
+            transform: "unset",
             gridRow: "1/7",
         },
     },
     thumbnail: {
         gridArea: "thumbnail",
         zIndex: 2,
+        [theme.breakpoints.down("md")]: {
+            width: "20vw",
+        },
         [theme.breakpoints.down("sm")]: {
             marginTop: theme.spacing(5),
+            width: "35vw",
+            justifySelf: "center",
+        },
+        [theme.breakpoints.down("xs")]: {
+            width: "50vw",
         },
     },
 
@@ -67,6 +77,7 @@ const css = makeStyles((theme) => ({
         gridArea: "details",
         zIndex: 2,
         paddingLeft: theme.spacing(5),
+        paddingBottom: theme.spacing(5),
         color: "#C7C1BA",
         textShadow: "2px 2px 5px rgba(0, 0, 0, 1)",
         [theme.breakpoints.down("sm")]: {
@@ -75,10 +86,13 @@ const css = makeStyles((theme) => ({
     },
     overview: {
         gridArea: "overview",
-        color: "#B1B0AC",
+        color: theme.palette.primary.light,
         fontWeight: "bold",
         padding: theme.spacing(3, 5),
         zIndex: 2,
+        [theme.breakpoints.down("sm")]: {
+            color: theme.palette.grey.A200,
+        },
     },
     title: {
         color: "white",

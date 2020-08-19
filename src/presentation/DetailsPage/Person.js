@@ -40,7 +40,9 @@ export default function Person({ data }) {
                     </Box>
                 </div>
                 <div className={classes.overview}>
-                    <Typography variant="h5">{data.biography}</Typography>
+                    <Typography variant="h5">
+                        {data.biography && data.biography.slice(1, 500)}
+                    </Typography>
                 </div>
             </div>
         </>
