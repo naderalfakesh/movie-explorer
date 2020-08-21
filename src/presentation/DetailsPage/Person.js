@@ -41,7 +41,7 @@ export default function Person({ data }) {
                 </div>
                 <div className={classes.overview}>
                     <Typography variant="h5">
-                        {data.biography && data.biography.slice(1, 500)}
+                        {data.biography && data.biography.slice(0, 500)}
                     </Typography>
                 </div>
             </div>
