@@ -33,8 +33,9 @@ const css = makeStyles((theme) => ({
         width: "100%",
         background: theme.palette.grey[200],
         backgroundImage: (props) =>
-            props.background ? `url(${props.background})` : "none",
-        background: theme.palette.primary.main,
+            props.background
+                ? `url(${props.background})`
+                : theme.palette.primary.main,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         transform: "skewY(-2deg)",

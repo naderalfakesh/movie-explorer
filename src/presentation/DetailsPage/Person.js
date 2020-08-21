@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Chip, Typography, Link } from "@material-ui/core";
+import { Box, Typography, Link } from "@material-ui/core";
 import { imageBaseURL } from "../../Components/API/constants";
 import css from "./style.js";
 
