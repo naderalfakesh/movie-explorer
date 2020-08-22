@@ -8,12 +8,12 @@ const useStyles = makeStyles((theme) => ({
         color: "black",
     },
 }));
-export default function SelectInput({ label, values, userInput }) {
+export default function SelectInput({ label, values, userInput, value }) {
     const classes = useStyles();
-    const [value, setValue] = React.useState("");
+    // const [value, setValue] = React.useState("");
 
     const handleChange = (event) => {
-        setValue(event.target.value);
+        // setValue(event.target.value);
         userInput(event.target.value);
     };
     return (

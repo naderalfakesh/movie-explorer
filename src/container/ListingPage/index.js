@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getList, getFilteredList } from "../../Components/API";
 import ListingPage from "../../presentation/ListingPage";
 
-export default function DetailsPageContainer({ variant = "popular", type }) {
+export default function ListingPageContainer({ variant = "popular", type }) {
     const [itemList, setItemList] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [pagination, setPagination] = useState({
@@ -11,45 +11,69 @@ export default function DetailsPageContainer({ variant = "popular", type }) {
         total_pages: 0,
     });
     const [filter, setFilter] = useState({
+        active: false,
         genre: "",
         rating: "",
         year: "",
     });
-
     useEffect(() => {
-        setIsLoading(true);
-        getList(variant, pagination.page, type).then((data) => {
-            setItemList(data.results);
-            setPagination({
-                page: data.page,
-                total_results: data.total_results,
-                total_pages: data.total_pages,
+        return () => {
+            setFilter({
+                active: false,
+                genre: "",
+                rating: "",
+                year: "",
             });
-            setIsLoading(false);
-        });
-    }, [pagination.page, type, variant]);
+            setPagination((p) => ({ ...p, page: 1 }));
+        };
+    }, [variant, type]);
 
     useEffect(() => {
-        setIsLoading(true);
-        getFilteredList(filter.genre, filter.rating, filter.year, type).then(
-            (data) => {
-                setItemList(data.results);
-                setPagination({
-                    page: data.page,
-                    total_results: data.total_results,
-                    total_pages: data.total_pages,
-                });
-                setIsLoading(false);
-            }
-        );
-    }, [filter]);
+        if (!filter.active) {
+            setIsLoading(true);
+            getList(variant, pagination.page, type)
+                .then((data) => {
+                    setItemList(data.results);
+                    setPagination((p) => ({
+                        ...p,
+                        total_results: data.total_results,
+                        total_pages: data.total_pages,
+                    }));
+                    setIsLoading(false);
+                })
+                .catch(setItemList([]));
+        }
+    }, [pagination.page, type, variant, filter.active]);
+
+    useEffect(() => {
+        if (filter.active) {
+            setIsLoading(true);
+            getFilteredList(
+                filter.genre,
+                filter.rating,
+                filter.year,
+                type,
+                pagination.page
+            )
+                .then((data) => {
+                    setItemList(data.results);
+                    setPagination((p) => ({
+                        ...p,
+                        total_results: data.total_results,
+                        total_pages: data.total_pages,
+                    }));
+                    setIsLoading(false);
+                })
+                .catch(setItemList([]));
+        }
+    }, [pagination.page, type, variant, filter]);
 
     const handlePageChange = (value) => {
         setPagination({ ...pagination, page: value });
     };
 
     const handleFilter = (genre, rating, year) => {
-        setFilter({ genre, rating, year });
+        setFilter({ active: true, genre, rating, year });
     };
     return (
         <ListingPage
@@ -60,6 +84,7 @@ export default function DetailsPageContainer({ variant = "popular", type }) {
             total_pages={pagination.total_pages}
             handlePageChange={handlePageChange}
             handleFilter={handleFilter}
+            filterReset={!filter.active}
             isLoading={isLoading}
         />
     );

@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Typography, Box, Grid, Divider, Button } from "@material-ui/core";
 import SliderInput from "./SliderInput";
 import SelectInput from "./SelectInput";
 import GenresList from "../../Components/API/genres";
 
-export default function Filter({ handleFilter }) {
+export default function Filter({ handleFilter, filterReset }) {
     const [genre, setGenre] = React.useState("");
-    const [rating, setRating] = React.useState("");
-    const [year, setYear] = React.useState("");
+    const [rating, setRating] = React.useState([1, 10]);
+    const [year, setYear] = React.useState(2020);
+
+    useEffect(() => {
+        if (filterReset) {
+            setGenre("");
+            setRating([1, 10]);
+            setYear(2020);
+        }
+    }, [filterReset]);
 
     return (
         <Box mb={3}>
@@ -22,6 +30,7 @@ export default function Filter({ handleFilter }) {
                             label="Genre"
                             values={GenresList}
                             userInput={setGenre}
+                            value={genre}
                         />
                     </Grid>
 
@@ -33,6 +42,7 @@ export default function Filter({ handleFilter }) {
                             min={1}
                             max={10}
                             userInput={setRating}
+                            value={rating}
                         />
                     </Grid>
                     <Grid item>
@@ -43,6 +53,7 @@ export default function Filter({ handleFilter }) {
                             min={2000}
                             max={2020}
                             userInput={setYear}
+                            value={year}
                         />
                     </Grid>
                     <Grid item>

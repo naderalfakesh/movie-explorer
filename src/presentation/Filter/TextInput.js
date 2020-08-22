@@ -10,11 +10,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function TextInput({ label, userInput }) {
+export default function TextInput({ label, userInput, value }) {
     const classes = useStyles();
-    const [value, setValue] = React.useState("");
+    // const [value, setValue] = React.useState("");
     const handleChange = (event) => {
-        setValue(event.target.value);
+        // setValue(event.target.value);
         userInput(event.target.value);
     };
     return (

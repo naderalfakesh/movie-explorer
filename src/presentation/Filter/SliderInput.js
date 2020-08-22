@@ -8,10 +8,11 @@ export default function SliderInput({
     max,
     step,
     userInput,
+    value,
 }) {
-    const [value, setValue] = React.useState(defaultValue);
+    // const [value, setValue] = React.useState(defaultValue);
     const handleChange = (event, newValue) => {
-        setValue(newValue);
+        // setValue(newValue);
         userInput(newValue);
     };
     return (

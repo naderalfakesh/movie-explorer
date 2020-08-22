@@ -18,6 +18,7 @@ export default function ListingPage({
     total_results,
     total_pages,
     handlePageChange,
+    filterReset,
     handleFilter,
     isLoading = false,
 }) {
@@ -34,7 +35,10 @@ export default function ListingPage({
                 >
                     {type !== "person" && (
                         <Grid item lg={3} md={3} sm={12} xs={12}>
-                            <Filter handleFilter={handleFilter} />
+                            <Filter
+                                handleFilter={handleFilter}
+                                filterReset={filterReset}
+                            />
                         </Grid>
                     )}
                     <Grid item lg={9} md={9} sm={12} xs={12}>
