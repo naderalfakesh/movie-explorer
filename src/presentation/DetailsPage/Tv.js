@@ -5,7 +5,6 @@ import { imageBaseURL } from "../../Components/API/constants";
 import css from "./style.js";
 
 export default function Tv({ data }) {
-    console.log(data.backdrop_path);
     const background =
         data && data.backdrop_path
             ? imageBaseURL(1280) + data.backdrop_path

@@ -4,7 +4,6 @@ const fetchAPI = (URL) => {
 };
 const getList = (variant = "popular", page = 1, type = "movie") => {
     let URL = `${BASE_URL}/${type}/${variant}?api_key=${API_KEY}&language=en-US&page=${page}`;
-    console.log("notF", URL);
     return fetchAPI(URL);
 };
 const getFilteredList = (
@@ -22,12 +21,10 @@ const getFilteredList = (
             URL +
             `&vote_average.gte=${rating[0]}&vote_average.lte=${rating[1]}`;
     if (year) URL = URL + `&year=${year}&first_air_date_year=${year}`; // different variable in movies and series
-    console.log("F", URL);
     return fetchAPI(URL);
 };
 const getDetails = (id, type) => {
     let URL = `${BASE_URL}/${type}/${id}?api_key=${API_KEY}`;
-    console.log(URL);
     return fetchAPI(URL);
 };
 

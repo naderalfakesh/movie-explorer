@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function PaginatedList({ list, type, searchType, isLoading }) {
     const classes = useStyles();
-    // console.log(list)
     return (
         <div className={classes.wrapper}>
             {isLoading
