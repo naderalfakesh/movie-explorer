@@ -45,7 +45,7 @@ export default function MediaCard(props) {
         <Box
             className={classes.card}
             onClick={() => {
-                history.push(`/${type}/${props.id}`);
+                history.push(`/details/${type}/${props.id}`);
                 BackToTop();
             }}
         >

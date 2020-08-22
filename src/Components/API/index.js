@@ -6,6 +6,12 @@ const getList = (variant = "popular", page = 1, type = "movie") => {
     let URL = `${BASE_URL}/${type}/${variant}?api_key=${API_KEY}&language=en-US&page=${page}`;
     return fetchAPI(URL);
 };
+const getDetails = (id, type) => {
+    let URL = `${BASE_URL}/${type}/${id}?api_key=${API_KEY}`;
+    console.log(URL);
+    return fetchAPI(URL);
+};
+
 const getMovies = (variant = "popular", page = 1) => {
     let URL = `${BASE_URL}/movie/${variant}?api_key=${API_KEY}&language=en-US&page=${page}`;
     return fetchAPI(URL);
@@ -79,6 +85,7 @@ const search = (type = "multi", query, page = 1) => {
 export {
     fetchAPI,
     getList,
+    getDetails,
     getMovies,
     getMovie,
     getSeries,

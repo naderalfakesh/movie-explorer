@@ -18,9 +18,14 @@ export default function Tv({ data }) {
                     </Link>
                 </div>
                 <div className={classes.categories}>
-                    {data.genres.map((g) => (
-                        <Chip key={g.name} label={g.name} variant="outlined" />
-                    ))}
+                    {data.genres &&
+                        data.genres.map((g) => (
+                            <Chip
+                                key={g.name}
+                                label={g.name}
+                                variant="outlined"
+                            />
+                        ))}
                 </div>
                 <div className={classes.movieDetails}>
                     <Typography variant="h1" className={classes.title}>

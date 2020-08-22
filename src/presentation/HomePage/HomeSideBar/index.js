@@ -35,7 +35,7 @@ export default function HomeSideBar({ persons }) {
                                 name={actor.name}
                                 profession={actor.known_for_department}
                                 img={`${imageBaseURL(92)}${actor.profile_path}`}
-                                link={"/person/" + actor.id}
+                                link={"/details/person/" + actor.id}
                                 knownFor={actor.known_for[0].title}
                             />
                         </Grid>

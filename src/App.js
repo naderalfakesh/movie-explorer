@@ -1,24 +1,29 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useParams } from "react-router-dom";
 import Header from "./container/Header";
 import Footer from "./container/Footer";
 import HomePage from "./container/HomePage";
 // import Movies from "./container/MoviesPage";
-import MovieDetails from "./container/MovieDetailsPage";
+// import MovieDetails from "./container/MovieDetailsPage";
 // import Series from "./container/SeriesPage";
-import SerieDetails from "./container/SerieDetailsPage";
+// import SerieDetails from "./container/SerieDetailsPage";
 // import Cast from "./container/CastPage";
-import CastDetails from "./container/CastDetailsPage";
+// import CastDetails from "./container/CastDetailsPage";
 import Search from "./container/SearchPage";
 import Colors from "./views/theme/Colors";
 import ListingPage from "./container/ListingPage";
+import DetailsPage from "./container/DetailsPage";
 
 class App extends React.Component {
     render() {
+        // const { id,type } = useParams();
         return (
             <>
                 <Header />
                 <Switch>
+                    <Route exact path="/details/:type/:id">
+                        <DetailsPage />
+                    </Route>
                     <Route exact path="/">
                         <HomePage />
                     </Route>
@@ -35,9 +40,9 @@ class App extends React.Component {
                         <ListingPage type="movie" />
                     </Route>
 
-                    <Route exact path="/movie/:id">
+                    {/* <Route exact path="/movie/:id">
                         <MovieDetails type="movie" />
-                    </Route>
+                    </Route> */}
                     <Route exact path="/series/rated">
                         <ListingPage type="tv" variant="top_rated" />
                     </Route>
@@ -47,16 +52,16 @@ class App extends React.Component {
                     <Route path="/series">
                         <ListingPage type="tv" />
                     </Route>
-                    <Route exact path="/tv/:id">
+                    {/* <Route exact path="/tv/:id">
                         <SerieDetails type="tv" />
-                    </Route>
+                    </Route> */}
 
                     <Route exact path="/cast">
                         <ListingPage type="person" />
                     </Route>
-                    <Route exact path="/person/:id">
+                    {/* <Route exact path="/person/:id">
                         <CastDetails type="person" />
-                    </Route>
+                    </Route> */}
                     <Route exact path="/colors">
                         <Colors />
                     </Route>

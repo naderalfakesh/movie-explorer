@@ -17,7 +17,7 @@ export default function Person(props) {
         <Box
             className={classes.card}
             onClick={() => {
-                history.push(`/${props.type}/${props.id}`);
+                history.push(`/details/${props.type}/${props.id}`);
                 BackToTop();
             }}
         >
