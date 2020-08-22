@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getList, getFilteredList } from "../../Components/API";
-import SeriesPage from "../../presentation/SeriesPage";
-import MoviesPage from "../../presentation/MoviesPage";
-import CastPage from "../../presentation/CastPage";
+import ListingPage from "../../presentation/ListingPage";
 
 export default function DetailsPageContainer({ variant = "popular", type }) {
     const [itemList, setItemList] = useState([]);
@@ -53,45 +51,16 @@ export default function DetailsPageContainer({ variant = "popular", type }) {
     const handleFilter = (genre, rating, year) => {
         setFilter({ genre, rating, year });
     };
-
-    if (type === "tv") {
-        return (
-            <SeriesPage
-                list={itemList}
-                type="tv"
-                page={pagination.page}
-                total_results={pagination.total_results}
-                total_pages={pagination.total_pages}
-                handlePageChange={handlePageChange}
-                handleFilter={handleFilter}
-                isLoading={isLoading}
-            />
-        );
-    }
-    if (type === "movie") {
-        return (
-            <MoviesPage
-                list={itemList}
-                type="movie"
-                page={pagination.page}
-                total_results={pagination.total_results}
-                total_pages={pagination.total_pages}
-                handlePageChange={handlePageChange}
-                handleFilter={handleFilter}
-                isLoading={isLoading}
-            />
-        );
-    } else {
-        return (
-            <CastPage
-                list={itemList}
-                type="person"
-                page={pagination.page}
-                total_results={pagination.total_results}
-                total_pages={pagination.total_pages}
-                handlePageChange={handlePageChange}
-                isLoading={isLoading}
-            />
-        );
-    }
+    return (
+        <ListingPage
+            list={itemList}
+            type={type}
+            page={pagination.page}
+            total_results={pagination.total_results}
+            total_pages={pagination.total_pages}
+            handlePageChange={handlePageChange}
+            handleFilter={handleFilter}
+            isLoading={isLoading}
+        />
+    );
 }

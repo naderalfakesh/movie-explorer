@@ -3,7 +3,6 @@ const fetchAPI = (URL) => {
     return fetch(URL).then((resp) => resp.json());
 };
 const getList = (variant = "popular", page = 1, type = "movie") => {
-    console.log(variant, page, type);
     let URL = `${BASE_URL}/${type}/${variant}?api_key=${API_KEY}&language=en-US&page=${page}`;
     return fetchAPI(URL);
 };
