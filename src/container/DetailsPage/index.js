@@ -8,7 +8,7 @@ export default function DetailsPageContainer() {
     const [item, setItem] = useState();
     useEffect(() => {
         getDetails(id, type).then(setItem).catch(console.log);
-    }, [id]);
+    }, [id, type]);
 
     return <DetailsPage data={item} type={type} />;
 }
