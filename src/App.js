@@ -11,6 +11,7 @@ import Cast from "./container/CastPage";
 import CastDetails from "./container/CastDetailsPage";
 import Search from "./container/SearchPage";
 import Colors from "./views/theme/Colors";
+import ListingPage from "./container/ListingPage";
 
 class App extends React.Component {
     render() {
@@ -25,36 +26,36 @@ class App extends React.Component {
                         <Search />
                     </Route>
                     <Route exact path="/movies/rated">
-                        <Movies variant="top_rated" />
+                        <ListingPage type="movie" variant="top_rated" />
                     </Route>
                     <Route exact path="/movies/recent">
-                        <Movies variant="now_playing" />
+                        <ListingPage type="movie" variant="now_playing" />
                     </Route>
                     <Route path="/movies">
-                        <Movies />
+                        <ListingPage type="movie" />
                     </Route>
 
                     <Route exact path="/movie/:id">
-                        <MovieDetails />
+                        <MovieDetails type="movie" />
                     </Route>
                     <Route exact path="/series/rated">
-                        <Series variant="top_rated" />
+                        <ListingPage type="tv" variant="top_rated" />
                     </Route>
                     <Route exact path="/series/on_air">
-                        <Series variant="on_the_air" />
+                        <ListingPage type="tv" variant="on_the_air" />
                     </Route>
                     <Route path="/series">
-                        <Series />
+                        <ListingPage type="tv" />
                     </Route>
                     <Route exact path="/tv/:id">
-                        <SerieDetails />
+                        <SerieDetails type="tv" />
                     </Route>
 
                     <Route exact path="/cast">
-                        <Cast />
+                        <ListingPage type="person" />
                     </Route>
                     <Route exact path="/person/:id">
-                        <CastDetails />
+                        <CastDetails type="person" />
                     </Route>
                     <Route exact path="/colors">
                         <Colors />
