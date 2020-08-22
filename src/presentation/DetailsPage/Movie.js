@@ -5,14 +5,17 @@ import { imageBaseURL } from "../../Components/API/constants";
 import css from "./style.js";
 
 export default function Movie({ data }) {
-    const background = data ? imageBaseURL(1280) + data.backdrop_path : "";
+    const background =
+        data && data.backdrop_path
+            ? imageBaseURL(1280) + data.backdrop_path
+            : "";
     const poster = data ? imageBaseURL(300) + data.poster_path : "";
     const classes = css({ background });
 
     return (
         <>
             <div className={classes.gridContainer}>
-                <div className={classes.poster}></div>
+                <div className={classes.backgroundImage}></div>
                 <div className={classes.thumbnail}>
                     <Link href={data.homepage}>
                         <img src={poster} alt="Poster" width="100%" />

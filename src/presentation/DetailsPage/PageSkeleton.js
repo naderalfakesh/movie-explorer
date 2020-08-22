@@ -10,7 +10,7 @@ export default function PageSkelton() {
     return (
         <div>
             <div className={classes.gridContainer}>
-                <div className={classes.poster}>
+                <div className={classes.backgroundImage}>
                     <Skeleton
                         variant="rect"
                         height="100%"

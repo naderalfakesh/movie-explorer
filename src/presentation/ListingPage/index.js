@@ -41,17 +41,31 @@ export default function ListingPage({
                             />
                         </Grid>
                     )}
-                    <Grid item lg={9} md={9} sm={12} xs={12}>
-                        <PaginatedList
-                            list={list}
-                            type={type}
-                            page={page}
-                            total_results={total_results}
-                            total_pages={total_pages}
-                            handlePageChange={handlePageChange}
-                            isLoading={isLoading}
-                        />
-                    </Grid>
+                    {type !== "person" ? (
+                        <Grid item lg={9} md={9} sm={12} xs={12}>
+                            <PaginatedList
+                                list={list}
+                                type={type}
+                                page={page}
+                                total_results={total_results}
+                                total_pages={total_pages}
+                                handlePageChange={handlePageChange}
+                                isLoading={isLoading}
+                            />
+                        </Grid>
+                    ) : (
+                        <Grid item xs={12}>
+                            <PaginatedList
+                                list={list}
+                                type={type}
+                                page={page}
+                                total_results={total_results}
+                                total_pages={total_pages}
+                                handlePageChange={handlePageChange}
+                                isLoading={isLoading}
+                            />
+                        </Grid>
+                    )}
                 </Grid>
             </Box>
         </Container>

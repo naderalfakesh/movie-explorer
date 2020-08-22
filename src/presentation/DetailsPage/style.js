@@ -2,7 +2,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const css = makeStyles((theme) => ({
     gridContainer: {
-        // minHeight: "50vh",
         backgroundColor: theme.palette.grey[200],
         display: "grid",
         gridTemplateColumns: "1fr 1fr 4fr",
@@ -27,17 +26,15 @@ const css = makeStyles((theme) => ({
         "overview overview overview"`,
         },
     },
-    poster: {
+    backgroundImage: {
         gridColumn: "1/4",
         gridRow: "1/4",
         width: "100%",
-        background: theme.palette.grey[200],
-        backgroundImage: (props) =>
+        background: (props) =>
             props.background
-                ? `url(${props.background})`
+                ? `url(${props.background}) no-repeat`
                 : theme.palette.primary.main,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
+        backgroundSize: "cover !important",
         transform: "skewY(-2deg)",
         transformOrigin: "0 0",
         zIndex: 1,
