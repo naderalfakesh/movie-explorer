@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getMovies, getSeries, getTrendingPersons } from "../../Components/API";
+import { getList, getTrendingPersons } from "../../Components/API";
 import HomePage from "../../presentation/HomePage";
 
 const MOVIES_VARIANTS = ["popular", "top_rated", "upcoming"];
@@ -23,11 +23,11 @@ export default function HomePageContainer() {
         setMovieIsLoading(true);
         setTVIsLoading(true);
         setPersonIsLoading(true);
-        getMovies("popular").then((json) => {
+        getList("popular", 1, "movie").then((json) => {
             setMovieList(json.results);
             setMovieIsLoading(false);
         });
-        getSeries("popular").then((json) => {
+        getList("popular", 1, "tv").then((json) => {
             setTvList(json.results);
             setTVIsLoading(false);
         });
@@ -40,14 +40,14 @@ export default function HomePageContainer() {
     const handleVariantChange = (type = "movie", variant = "popular") => {
         if (type === "tv") {
             setTVIsLoading(true);
-            getSeries(variant).then((json) => {
+            getList(variant, 1, "tv").then((json) => {
                 setTvList(json.results);
                 setTVIsLoading(false);
             });
             setSeriesActiveVariant(variant);
         } else {
             setMovieIsLoading(true);
-            getMovies(variant).then((json) => {
+            getList(variant, 1, "movie").then((json) => {
                 setMovieList(json.results);
                 setMovieIsLoading(false);
             });

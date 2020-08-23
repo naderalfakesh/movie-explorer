@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Header from "../../presentation/Header";
+import { getList } from "../../Components/API";
 
 export default function HeaderContainer() {
+    const [movieList, setMovieList] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        setIsLoading(true);
+        getList("upcoming", 1, "movie")
+            .then((data) => {
+                setMovieList(data.results);
+                setIsLoading(false);
+            })
+            .catch(console.log);
+    }, []);
+
     let history = useHistory();
+
     const handleSearch = (type, query) => {
         history.push(`/search/${type}/${query}`);
     };
 
-    return <Header handleSearch={handleSearch} linksList={linksList} />;
+    return (
+        <Header
+            handleSearch={handleSearch}
+            linksList={linksList}
+            movieList={movieList}
+            isLoading={isLoading}
+        />
+    );
 }
 
 const linksList = [

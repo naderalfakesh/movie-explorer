@@ -8,7 +8,12 @@ import headerBG from "../../assets/headerBG.jpg";
 import HeaderSlider from "./HeaderSlider";
 import { Route, useLocation } from "react-router-dom";
 
-export default function Header({ handleSearch, linksList }) {
+export default function Header({
+    handleSearch,
+    linksList,
+    movieList,
+    isLoading,
+}) {
     let location = useLocation();
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -52,7 +57,7 @@ export default function Header({ handleSearch, linksList }) {
             <SearchBar handleSearch={handleSearch} />
             <Social />
             <Route exact path="/">
-                <HeaderSlider />
+                <HeaderSlider movieList={movieList} isLoading={isLoading} />
             </Route>
         </div>
     );

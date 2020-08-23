@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Container, Box } from "@material-ui/core";
-import { getMovies } from "../../../Components/API";
 import MediaCard from "../../../container/MediaCard";
 import MediaCardSkeleton from "../../MediaCard/MediaCardSkeleton";
 import Slider from "../../../Components/Slider";
@@ -30,16 +29,7 @@ const settings = {
     },
 };
 
-export default function HeaderSlider() {
-    const [movieList, setMovieList] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    useEffect(() => {
-        setIsLoading(true);
-        getMovies("upcoming").then((json) => {
-            setMovieList(json.results);
-            setIsLoading(false);
-        });
-    }, []);
+export default function HeaderSlider({ movieList, isLoading }) {
     return (
         <Container maxWidth="lg">
             <Box mt={3} pb={2}>
